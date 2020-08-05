@@ -215,13 +215,14 @@ void Case::createStateMachine()
     connect(revealedState, &QState::entered, [this]()
     {
         unPreviewNeighbors();
-       // this->setIcon(getIcon(IconeCase::Vide));
         this->setChecked(true);
         if (!EstMine())
         {
-           // setText();
+            setText();
+
             if (!AdesMinesAutour())
                 revealNeighbors();
+
             emit revealed();
         }
         else
@@ -235,8 +236,8 @@ void Case::createStateMachine()
 
     connect(flaggedState, &QState::entered, [this]()
     {
-        //this->setIcon(getIcon(IconeCase::Vide));
-        this->setText();
+        QPushButton::setStyleSheet(NormalStyle.arg("blue"));
+         QPushButton::setText("?");
         for (auto neighbor : _voisins)
             neighbor->incrementNbDrapeauAutour();
         emit flagged(_isMine);
@@ -245,9 +246,9 @@ void Case::createStateMachine()
 
     connect(flaggedState, &QState::exited, [this]()
     {
-        for (auto neighbor : _voisins){
-            this->setText();
-            neighbor->decrementNbDrapeauAutour();}
+         QPushButton::setText("");
+        for (auto neighbor : _voisins)
+            neighbor->decrementNbDrapeauAutour();
         emit unFlagged(_isMine);
     });
 
@@ -297,21 +298,11 @@ void Case::setText()
     default:
            break;
     }
-
-    if(AuneMarque()){
-        QPushButton::setStyleSheet(CaseCliqueStyle.arg("blue"));
-        QPushButton::setText("?");
-    }else{
-        QPushButton::setText("");
-    }
-    if(!EstMine() && !AuneMarque()){
-    QPushButton::setStyleSheet(NormalStyle.arg(color));
+    QPushButton::setStyleSheet(CaseCliqueStyle.arg(color));
     if(_NbMinesAutour)
         QPushButton::setText(QString::number(_NbMinesAutour));
 }
 
-
-}
 
 void Case:: AfficheResultat(){
     if(EstMine()){

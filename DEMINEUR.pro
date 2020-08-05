@@ -47,7 +47,6 @@ RESOURCES += \
 
 DISTFILES += \
     icons/Mine.ico \
-    images/Drapeau.png \
     images/EmoticoneBlesse.png \
     images/EmoticoneLunnettes.png \
     images/EmoticoneSourire.png \

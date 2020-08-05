@@ -27,7 +27,7 @@ ChampDejeu::ChampDejeu(unsigned int nbLignes, unsigned int nbCols, unsigned int 
    }
     );
 
-    connect(explosionTimer, &QTimer::timeout, [this]()
+  connect(explosionTimer, &QTimer::timeout, [this]()
     {
         if (_mines.isEmpty())
         {
@@ -133,6 +133,7 @@ void ChampDejeu::_verifVictoire()
 
     if (!_etatJeux==EtatJeu::Succes)
     {
+        //envoie le signal pour notifier que le nombre de Drapeaux a changé
         emit flagCountChanged(_BonsDrapeaux.size() + _MauvaisDrapeaux.size());
         if ((_CaseDecouverts.size() ==(int) (_nbCols * _nbLignes) -(int) _numMines) && _MauvaisDrapeaux.isEmpty())
         {
