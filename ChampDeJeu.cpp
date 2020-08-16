@@ -118,7 +118,12 @@ void ChampDejeu::AjoutVoisins()
         }
     }
 }
-
+/*!
+    *  \brief Vérifie si le jeux doit continuer
+    * //envoie le signal pour notifier que le nombre de Drapeaux a changé
+    * Notifie la victoire
+    *
+    */
 void ChampDejeu::_verifVictoire()
 {
     //envoie le signal pour notifier que le nombre de Drapeaux a changé
@@ -135,7 +140,11 @@ void ChampDejeu::_verifVictoire()
             });
     }
 }}
-
+/*!
+    *  \brief S'occupe de la fin du jeu
+    * Emission du Signal de défaîte
+    *
+    */
 void ChampDejeu::Findejeu()
 {
     QTimer::singleShot(500, this, [this]()
@@ -160,7 +169,10 @@ void ChampDejeu::Findejeu()
         explosionTimer->start(25);
     });
 }
-
+/*!
+    *  \brief Permet de Ditribuer au hazard les mines
+    *
+    */
 void ChampDejeu::EpandageDesMines(Case* AuPremierClick)
 {
 

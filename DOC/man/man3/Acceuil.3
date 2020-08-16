@@ -1,0 +1,63 @@
+.TH "Acceuil" 3 "Dimanche 16 Août 2020" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Acceuil
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Acceuil\&.h>\fP
+.PP
+Est dérivée de QMainWindow\&.
+.SS "Signaux"
+
+.in +1c
+.ti -1c
+.RI "void \fBdemarrerJeu\fP ()"
+.br
+.ti -1c
+.RI "void \fBvictoire\fP ()"
+.br
+.ti -1c
+.RI "void \fBechec\fP ()"
+.br
+.ti -1c
+.RI "void \fBDemarrerNouveuJeu\fP ()"
+.br
+.RI "Démarre le Jeu du Niveau en cours Par défaut c'est le niveau Facile\&. "
+.in -1c
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBAcceuil\fP (QWidget *parent=nullptr)"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Définition à la ligne 16 du fichier Acceuil\&.h\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "Acceuil::Acceuil (QWidget * parent = \fCnullptr\fP)"
+
+.PP
+Définition à la ligne 16 du fichier Acceuil\&.cpp\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "void Acceuil::demarrerJeu ()\fC [signal]\fP"
+
+.SS "void Acceuil::DemarrerNouveuJeu ()\fC [signal]\fP"
+
+.PP
+Démarre le Jeu du Niveau en cours Par défaut c'est le niveau Facile\&. 
+.PP
+Définition à la ligne 239 du fichier Acceuil\&.cpp\&.
+.SS "void Acceuil::echec ()\fC [signal]\fP"
+
+.SS "void Acceuil::victoire ()\fC [signal]\fP"
+
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Demineur à partir du code source\&.

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Demineur:  Fichier source de Acceuil.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Mine.ico"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Demineur
+   </div>
+   <div id="projectbrief">La pratique de la programmation orientée objet passe par une approche radicalement différente des méthodes de programmation traditionnelles. Les langages objets font des programmeurs des metteurs en scène d’un jeu collectif où chaque objet-acteur (à qui on doit attribuer un rôle bien précis) contribue au succès du scénario. Le cours de Programmation Orientée Objet Avancée a pour but de nous doter des compétences pour mieux cerner ce jeu à travers le langage le C++.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Acceuil.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_acceuil_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MAINWINDOW_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MAINWINDOW_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_niveau_8h.html">Niveau.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_horloge_8h.html">Horloge.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_champ_de_jeu_8h.html">ChampDeJeu.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_compteur_de_mine_8h.html">CompteurDeMine.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QAction&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QActionGroup&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QMenu&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QFrame&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QPushButton&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QStateMachine&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QState&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_acceuil.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_acceuil.html">Acceuil</a> : <span class="keyword">public</span> QMainWindow</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;signals:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_acceuil.html#a3bc48cbf38fc34924496022a354ae153">   21</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_acceuil.html#a3bc48cbf38fc34924496022a354ae153">demarrerJeu</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_acceuil.html#a4a36ef7bd8bce2037d519311c5059535">   22</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_acceuil.html#a4a36ef7bd8bce2037d519311c5059535">victoire</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_acceuil.html#a38540922f266c31cec761399c44b10d5">   23</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_acceuil.html#a38540922f266c31cec761399c44b10d5">echec</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_acceuil.html#ae70e86a55e73dcd5691421d0d5f922e6">DemarrerNouveuJeu</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_acceuil.html#a48a8913578681334a50674c1be9e2406">Acceuil</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> miseEnPlaceMenus();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> initialisationJeux();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> ConfigMachineEtat();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> AfficheMessage(<span class="keywordtype">char</span>* Message);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    QFrame* CadrePrincipal;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    QAction* actionNouveauJeu;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_horloge.html">Horloge</a>* horloge;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_champ_dejeu.html">ChampDejeu</a>* champDejeu;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_compteur_de_mine.html">CompteurDeMine</a>* compteurDeMines;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    QMenu* menuJeu;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    QMenu* niveauMenu;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    QActionGroup* niveauActionGroup;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    QAction* facileAction;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    QAction* intermediaireAction;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    QAction* expertAction;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    QAction* persoAction;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    QAction* highScoreAction;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    QAction* exitAction;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    QMenu* menuApropos;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    QAction* aProposAction;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">//Pour Afficher le Temps</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    QTimer* horlogeJeux;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">// Pattern State</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    QStateMachine* m_machine;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    QState* EtatNonDemarre;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    QState* EtatEnCours;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    QState* EtatVictorieux;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    QState* EtatPartiePerdue;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Niveau du Jeu</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> defNiveau(<a class="code" href="_niveau_8h.html#aa41c77c19670017aaf2a677a06bd7ac2">Niveau</a> niveau);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="_niveau_8h.html#aa41c77c19670017aaf2a677a06bd7ac2">Niveau</a> niveau;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    quint32 nbLigne;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    quint32 nbCols;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    quint32 nbMines;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif // MAINWINDOW_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_acceuil_html_a38540922f266c31cec761399c44b10d5"><div class="ttname"><a href="class_acceuil.html#a38540922f266c31cec761399c44b10d5">Acceuil::echec</a></div><div class="ttdeci">void echec()</div></div>
+<div class="ttc" id="a_champ_de_jeu_8h_html"><div class="ttname"><a href="_champ_de_jeu_8h.html">ChampDeJeu.h</a></div></div>
+<div class="ttc" id="aclass_acceuil_html_ae70e86a55e73dcd5691421d0d5f922e6"><div class="ttname"><a href="class_acceuil.html#ae70e86a55e73dcd5691421d0d5f922e6">Acceuil::DemarrerNouveuJeu</a></div><div class="ttdeci">void DemarrerNouveuJeu()</div><div class="ttdoc">Démarre le Jeu du Niveau en cours Par défaut c'est le niveau Facile.</div><div class="ttdef"><b>Definition:</b> <a href="_acceuil_8cpp_source.html#l00239">Acceuil.cpp:239</a></div></div>
+<div class="ttc" id="a_compteur_de_mine_8h_html"><div class="ttname"><a href="_compteur_de_mine_8h.html">CompteurDeMine.h</a></div></div>
+<div class="ttc" id="aclass_horloge_html"><div class="ttname"><a href="class_horloge.html">Horloge</a></div><div class="ttdef"><b>Definition:</b> <a href="_horloge_8h_source.html#l00005">Horloge.h:6</a></div></div>
+<div class="ttc" id="aclass_compteur_de_mine_html"><div class="ttname"><a href="class_compteur_de_mine.html">CompteurDeMine</a></div><div class="ttdef"><b>Definition:</b> <a href="_compteur_de_mine_8h_source.html#l00006">CompteurDeMine.h:7</a></div></div>
+<div class="ttc" id="aclass_acceuil_html_a48a8913578681334a50674c1be9e2406"><div class="ttname"><a href="class_acceuil.html#a48a8913578681334a50674c1be9e2406">Acceuil::Acceuil</a></div><div class="ttdeci">Acceuil(QWidget *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="_acceuil_8cpp_source.html#l00016">Acceuil.cpp:16</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html"><div class="ttname"><a href="class_champ_dejeu.html">ChampDejeu</a></div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8h_source.html#l00012">ChampDeJeu.h:13</a></div></div>
+<div class="ttc" id="aclass_acceuil_html"><div class="ttname"><a href="class_acceuil.html">Acceuil</a></div><div class="ttdef"><b>Definition:</b> <a href="_acceuil_8h_source.html#l00016">Acceuil.h:17</a></div></div>
+<div class="ttc" id="a_niveau_8h_html_aa41c77c19670017aaf2a677a06bd7ac2"><div class="ttname"><a href="_niveau_8h.html#aa41c77c19670017aaf2a677a06bd7ac2">Niveau</a></div><div class="ttdeci">Niveau</div><div class="ttdef"><b>Definition:</b> <a href="_niveau_8h_source.html#l00003">Niveau.h:4</a></div></div>
+<div class="ttc" id="aclass_acceuil_html_a4a36ef7bd8bce2037d519311c5059535"><div class="ttname"><a href="class_acceuil.html#a4a36ef7bd8bce2037d519311c5059535">Acceuil::victoire</a></div><div class="ttdeci">void victoire()</div></div>
+<div class="ttc" id="a_niveau_8h_html"><div class="ttname"><a href="_niveau_8h.html">Niveau.h</a></div></div>
+<div class="ttc" id="a_horloge_8h_html"><div class="ttname"><a href="_horloge_8h.html">Horloge.h</a></div></div>
+<div class="ttc" id="aclass_acceuil_html_a3bc48cbf38fc34924496022a354ae153"><div class="ttname"><a href="class_acceuil.html#a3bc48cbf38fc34924496022a354ae153">Acceuil::demarrerJeu</a></div><div class="ttdeci">void demarrerJeu()</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

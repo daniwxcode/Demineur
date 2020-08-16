@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Demineur:  Fichier source de ChampDeJeu.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Mine.ico"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Demineur
+   </div>
+   <div id="projectbrief">La pratique de la programmation orientée objet passe par une approche radicalement différente des méthodes de programmation traditionnelles. Les langages objets font des programmeurs des metteurs en scène d’un jeu collectif où chaque objet-acteur (à qui on doit attribuer un rôle bien précis) contribue au succès du scénario. Le cours de Programmation Orientée Objet Avancée a pour but de nous doter des compétences pour mieux cerner ce jeu à travers le langage le C++.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ChampDeJeu.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_champ_de_jeu_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef CHAMPDEJEU_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define CHAMPDEJEU_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="_champ_de_jeu_8h.html#ae3d1f8a0f70b3121b83d003399defd15">    4</a></span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_case_8h.html">Case.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_etat_jeu_8h.html">EtatJeu.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include&lt;vector&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QList&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QFrame&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QSet&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_champ_dejeu.html">ChampDejeu</a> : <span class="keyword">public</span> QFrame</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_champ_dejeu.html#a887031dceb90c1fd1f7dcb8cd6e9cf4d">ChampDejeu</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_champ_dejeu.html#ad7a9e93cba7459beaafe040590a448b3">nbLignes</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_champ_dejeu.html#a991d5ed81d39cf2c53da8a36e6f45e27">nbCols</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_champ_dejeu.html#a5ce43d96c8fa2075ca67773610ca2452">numMines</a>, QWidget* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#a991d5ed81d39cf2c53da8a36e6f45e27">   18</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_champ_dejeu.html#a991d5ed81d39cf2c53da8a36e6f45e27">nbCols</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _nbCols; }</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#ad7a9e93cba7459beaafe040590a448b3">   19</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_champ_dejeu.html#ad7a9e93cba7459beaafe040590a448b3">nbLignes</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _nbLignes; }</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#a5ce43d96c8fa2075ca67773610ca2452">   20</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_champ_dejeu.html#a5ce43d96c8fa2075ca67773610ca2452">numMines</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _numMines; }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;     <span class="keywordtype">void</span> <a class="code" href="class_champ_dejeu.html#aa172b8566a62f0a4b5bb02488a6eeed9">EpandageDesMines</a>(<a class="code" href="class_case.html">Case</a>* firstClicked);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;signals:</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#a3f6e23941363c0c17c0c0c2a7e1deb8a">   26</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_champ_dejeu.html#a3f6e23941363c0c17c0c0c2a7e1deb8a">PretADemarrer</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#a67cd19809ec6fefb1b85555ff2827742">   27</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_champ_dejeu.html#a67cd19809ec6fefb1b85555ff2827742">Victoire</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#a5b8924e5a9acf75909101a1dcd4c88f7">   28</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_champ_dejeu.html#a5b8924e5a9acf75909101a1dcd4c88f7">Perdu</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#abe8c713908f93c734c0f6b17cb5c6a96">   29</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_champ_dejeu.html#abe8c713908f93c734c0f6b17cb5c6a96">ChangementNbDrapeau</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keyword">const</span> nombre);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> CreationDesCases();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> _miseEnPlace();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> AjoutVoisins();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> _verifVictoire();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> onVictory();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> Findejeu();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _nbLignes;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _nbCols;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _numMines;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    QList&lt;QList&lt;Case*&gt;&gt; _Cases;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    QSet&lt;Case*&gt; _mines;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    QSet&lt;Case*&gt; _BonsDrapeaux;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    QSet&lt;Case*&gt; _MauvaisDrapeaux;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    QSet&lt;Case*&gt; _CaseDecouverts;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    QTimer* explosionTimer;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="_etat_jeu_8h.html#ad0a6e6bb3698732b20786f284684be64">EtatJeu</a> _etatJeux;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif // CHAMPDEJEU_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_champ_dejeu_html_a5b8924e5a9acf75909101a1dcd4c88f7"><div class="ttname"><a href="class_champ_dejeu.html#a5b8924e5a9acf75909101a1dcd4c88f7">ChampDejeu::Perdu</a></div><div class="ttdeci">void Perdu()</div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a991d5ed81d39cf2c53da8a36e6f45e27"><div class="ttname"><a href="class_champ_dejeu.html#a991d5ed81d39cf2c53da8a36e6f45e27">ChampDejeu::nbCols</a></div><div class="ttdeci">unsigned int nbCols() const</div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8h_source.html#l00018">ChampDeJeu.h:18</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a887031dceb90c1fd1f7dcb8cd6e9cf4d"><div class="ttname"><a href="class_champ_dejeu.html#a887031dceb90c1fd1f7dcb8cd6e9cf4d">ChampDejeu::ChampDejeu</a></div><div class="ttdeci">ChampDejeu(unsigned int nbLignes, unsigned int nbCols, unsigned int numMines, QWidget *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8cpp_source.html#l00009">ChampDeJeu.cpp:9</a></div></div>
+<div class="ttc" id="aclass_case_html"><div class="ttname"><a href="class_case.html">Case</a></div><div class="ttdef"><b>Definition:</b> <a href="_case_8h_source.html#l00015">Case.h:16</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a3f6e23941363c0c17c0c0c2a7e1deb8a"><div class="ttname"><a href="class_champ_dejeu.html#a3f6e23941363c0c17c0c0c2a7e1deb8a">ChampDejeu::PretADemarrer</a></div><div class="ttdeci">void PretADemarrer()</div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_ad7a9e93cba7459beaafe040590a448b3"><div class="ttname"><a href="class_champ_dejeu.html#ad7a9e93cba7459beaafe040590a448b3">ChampDejeu::nbLignes</a></div><div class="ttdeci">unsigned int nbLignes() const</div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8h_source.html#l00019">ChampDeJeu.h:19</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html"><div class="ttname"><a href="class_champ_dejeu.html">ChampDejeu</a></div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8h_source.html#l00012">ChampDeJeu.h:13</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_abe8c713908f93c734c0f6b17cb5c6a96"><div class="ttname"><a href="class_champ_dejeu.html#abe8c713908f93c734c0f6b17cb5c6a96">ChampDejeu::ChangementNbDrapeau</a></div><div class="ttdeci">void ChangementNbDrapeau(unsigned int const nombre)</div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a5ce43d96c8fa2075ca67773610ca2452"><div class="ttname"><a href="class_champ_dejeu.html#a5ce43d96c8fa2075ca67773610ca2452">ChampDejeu::numMines</a></div><div class="ttdeci">unsigned int numMines() const</div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8h_source.html#l00020">ChampDeJeu.h:20</a></div></div>
+<div class="ttc" id="a_etat_jeu_8h_html_ad0a6e6bb3698732b20786f284684be64"><div class="ttname"><a href="_etat_jeu_8h.html#ad0a6e6bb3698732b20786f284684be64">EtatJeu</a></div><div class="ttdeci">EtatJeu</div><div class="ttdef"><b>Definition:</b> <a href="_etat_jeu_8h_source.html#l00004">EtatJeu.h:5</a></div></div>
+<div class="ttc" id="a_case_8h_html"><div class="ttname"><a href="_case_8h.html">Case.h</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a67cd19809ec6fefb1b85555ff2827742"><div class="ttname"><a href="class_champ_dejeu.html#a67cd19809ec6fefb1b85555ff2827742">ChampDejeu::Victoire</a></div><div class="ttdeci">void Victoire()</div></div>
+<div class="ttc" id="a_etat_jeu_8h_html"><div class="ttname"><a href="_etat_jeu_8h.html">EtatJeu.h</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_aa172b8566a62f0a4b5bb02488a6eeed9"><div class="ttname"><a href="class_champ_dejeu.html#aa172b8566a62f0a4b5bb02488a6eeed9">ChampDejeu::EpandageDesMines</a></div><div class="ttdeci">void EpandageDesMines(Case *firstClicked)</div><div class="ttdoc">Permet de Ditribuer au hazard les mines.</div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8cpp_source.html#l00176">ChampDeJeu.cpp:176</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

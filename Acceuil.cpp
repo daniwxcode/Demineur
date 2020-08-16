@@ -22,7 +22,16 @@ Acceuil::Acceuil(QWidget* parent)
 
 }
 
-
+/*!
+    *  \brief Configuration de la Machine des gestion des etats du jeux ainsi que les transitions possibles
+    * logique des état dans lesquels l'application peut se retrouver:
+    * 1- Demarrer pour devenir une partie en Cours
+    * 2- Une partie en Cours peut être gagnée
+    * 3- Une partie en Cours peut être perdue
+    * 4- Une partie en Cours peut être abandonnée
+    * 5- Après une victoire ou une défaite on peut toujours reprendre une nouvelle partie
+    *
+    */
 void Acceuil::ConfigMachineEtat()
 {
     //Gestion des Etats de l'application
@@ -79,7 +88,13 @@ void Acceuil::ConfigMachineEtat()
     m_machine->setInitialState(EtatNonDemarre);
     m_machine->start();
 }
+/*!
+    *  \brief Permet de construire le Menu:
+    * Ajout du sousmenu Nouveau Jeu
+    * Ajout du sousmenu de choix du niveau
 
+    *
+    */
 
 void Acceuil::miseEnPlaceMenus()
 {
@@ -128,7 +143,15 @@ void Acceuil::miseEnPlaceMenus()
     this->menuBar()->addMenu(niveauMenu);
     defNiveau(Niveau::Facile);
 }
-
+/*!
+    *  \brief Permet d'initialiser une partie
+    * creation du champs de jeu
+    * intialisateion du compteur de Mines
+    * Ajout du jeu
+    * Ajout de l'horloge
+    * Ajout du Cadre d'information à l'interface
+    * Ajout du champ de Mine
+    */
 void Acceuil::initialisationJeux(){
      // creation du chmps de jeu
     QFrame* _cadrePrincipal = new QFrame(this);
@@ -172,6 +195,14 @@ void Acceuil::initialisationJeux(){
 
 
 }
+
+/*!
+    *  \brief Permet de définir le niveau de complexité du jeu
+    * Facile 10X10 cases avec 10 mines
+    * Intemédiaire 16X16 cases avec 40 mines
+    * Expert 16X30 cases avec 99 mines
+    *
+    */
 void Acceuil::defNiveau(Niveau niveau){
     this->niveau = niveau;
 
@@ -200,7 +231,11 @@ void Acceuil::defNiveau(Niveau niveau){
     }
     DemarrerNouveuJeu();
 }
-
+/*!
+    *  \brief Démarre le Jeu du Niveau en cours
+    * Par défaut c'est le niveau Facile
+    *
+    */
 void Acceuil:: DemarrerNouveuJeu(){
     ConfigMachineEtat();
     initialisationJeux();

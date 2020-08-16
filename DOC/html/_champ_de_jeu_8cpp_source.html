@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Demineur:  Fichier source de ChampDeJeu.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Mine.ico"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Demineur
+   </div>
+   <div id="projectbrief">La pratique de la programmation orientée objet passe par une approche radicalement différente des méthodes de programmation traditionnelles. Les langages objets font des programmeurs des metteurs en scène d’un jeu collectif où chaque objet-acteur (à qui on doit attribuer un rôle bien précis) contribue au succès du scénario. Le cours de Programmation Orientée Objet Avancée a pour but de nous doter des compétences pour mieux cerner ce jeu à travers le langage le C++.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ChampDeJeu.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_champ_de_jeu_8cpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;ChampDejeu.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QGridLayout&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QSpacerItem&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QSet&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QTimer&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#a887031dceb90c1fd1f7dcb8cd6e9cf4d">    9</a></span>&#160;<a class="code" href="class_champ_dejeu.html#a887031dceb90c1fd1f7dcb8cd6e9cf4d">ChampDejeu::ChampDejeu</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nbLignes, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nbCols, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numMines, QWidget* parent <span class="comment">/*= nullptr*/</span>)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    : _nbLignes(nbLignes)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    , _nbCols(nbCols)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    , _numMines(numMines)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    , QFrame(parent)</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    , explosionTimer(new QTimer(this))</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    _miseEnPlace();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    CreationDesCases();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    AjoutVoisins();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   connect(<span class="keyword">this</span>, &amp;<a class="code" href="class_champ_dejeu.html#a67cd19809ec6fefb1b85555ff2827742">ChampDejeu::Victoire</a>, [<span class="keyword">this</span>]()</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;       explosionTimer-&gt;setProperty(<span class="stringliteral">&quot;Victoire&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   });</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   connect(<span class="keyword">this</span>, &amp;<a class="code" href="class_champ_dejeu.html#a5b8924e5a9acf75909101a1dcd4c88f7">ChampDejeu::Perdu</a>, [<span class="keyword">this</span>]()</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;       explosionTimer-&gt;setProperty(<span class="stringliteral">&quot;Victoire&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    );</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  connect(explosionTimer, &amp;QTimer::timeout, [<span class="keyword">this</span>]()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (_mines.isEmpty())</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            explosionTimer-&gt;stop();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            return;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="class_case.html">Case</a>* mine = _mines.values().front();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        _mines.remove(mine);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        mine-&gt;AfficheResultat();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    });</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> ChampDejeu::_miseEnPlace()</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    this-&gt;setAttribute(Qt::WA_LayoutUsesWidgetRect);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    this-&gt;setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">auto</span> layout = <span class="keyword">new</span> QGridLayout;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    layout-&gt;setSpacing(0);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    layout-&gt;setMargin(0);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    layout-&gt;setContentsMargins(0, 0, 0, 0);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    layout-&gt;setSizeConstraint(QLayout::SetFixedSize);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    this-&gt;setLayout(layout);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> ChampDejeu::CreationDesCases()</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> r = 0; r &lt; _nbLignes; ++r)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        _Cases += QList&lt;Case*&gt;{};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c = 0; c &lt; _nbCols; ++c)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="comment">// Ajout d&#39;une nouvelle case</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            _Cases[r] += <span class="keyword">new</span> <a class="code" href="class_case.html">Case</a>({ r, c }, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">static_cast&lt;</span>QGridLayout*<span class="keyword">&gt;</span>(this-&gt;layout())-&gt;addWidget(_Cases[r][c], r, c);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            connect(_Cases[r][c], &amp;<a class="code" href="class_case.html#aab1e9a9dd774559a05a99e3da038f778">Case::PremierClick</a>, <span class="keyword">this</span>, &amp;<a class="code" href="class_champ_dejeu.html#aa172b8566a62f0a4b5bb02488a6eeed9">ChampDejeu::EpandageDesMines</a>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            connect(_Cases[r][c], &amp;<a class="code" href="class_case.html#a1a155038c0b652efc9ae6f4f26a7232a">Case::PointDrapeau</a>, [<span class="keyword">this</span>, <a class="code" href="class_case.html">Case</a> = _Cases[r][c]](<span class="keywordtype">bool</span> isMine)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">if</span> (isMine)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    _BonsDrapeaux.insert(<a class="code" href="class_case.html">Case</a>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    _MauvaisDrapeaux.insert(<a class="code" href="class_case.html">Case</a>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                _verifVictoire();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            });</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            connect(_Cases[r][c], &amp;<a class="code" href="class_case.html#a1dbaee070a99d8128f90e55f568e54c6">Case::SuppressionDrappeau</a>, [<span class="keyword">this</span>, <a class="code" href="class_case.html">Case</a> = _Cases[r][c]](<span class="keywordtype">bool</span> isMine)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">if</span> (isMine)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    _BonsDrapeaux.remove(<a class="code" href="class_case.html">Case</a>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    _MauvaisDrapeaux.remove(<a class="code" href="class_case.html">Case</a>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                _verifVictoire();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            });</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            connect(_Cases[r][c], &amp;<a class="code" href="class_case.html#adea3887c0e9c604041182e699368f7dd">Case::revealed</a>, [<span class="keyword">this</span>, <a class="code" href="class_case.html">Case</a> = _Cases[r][c]]()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                _CaseDecouverts.insert(<a class="code" href="class_case.html">Case</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                _verifVictoire();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            });</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            connect(_Cases[r][c], &amp;<a class="code" href="class_case.html#af3da0c626acc6ac47b2f9c4db7ffbeef">Case::Explosion</a>, <span class="keyword">this</span>, &amp;ChampDejeu::Findejeu);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            connect(<span class="keyword">this</span>, &amp;<a class="code" href="class_champ_dejeu.html#a5b8924e5a9acf75909101a1dcd4c88f7">ChampDejeu::Perdu</a>, _Cases[r][c], &amp;<a class="code" href="class_case.html#a359406b8eb39c10d53453b776685e22b">Case::Inactivation</a>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            connect(<span class="keyword">this</span>, &amp;<a class="code" href="class_champ_dejeu.html#a67cd19809ec6fefb1b85555ff2827742">ChampDejeu::Victoire</a>, _Cases[r][c], &amp;<a class="code" href="class_case.html#a359406b8eb39c10d53453b776685e22b">Case::Inactivation</a>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    _Cases[0][0]-&gt;setDown(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> ChampDejeu::AjoutVoisins()</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> r = 0; r &lt; _nbLignes; ++r)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c = 0; c &lt; _nbCols; ++c)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="comment">// add a new Case to the row</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keyword">auto</span>* <a class="code" href="class_case.html">Case</a> = _Cases[r][c];</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keyword">auto</span> lastRow = _nbLignes - 1;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keyword">auto</span> lastCol = _nbCols - 1;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">if</span> (r &amp;&amp; c)                     <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r - 1][c - 1]);                <span class="comment">// haut gauche</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">if</span> (r)                          <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r - 1][c]);                    <span class="comment">// haut</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">if</span> (r &amp;&amp; c &lt; lastCol)           <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r - 1][c + 1]);                <span class="comment">// haut droit</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">if</span> (c &lt; lastCol)                <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r][c + 1]);                    <span class="comment">// droit</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">if</span> (r &lt; lastRow &amp;&amp; c &lt; lastCol) <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r + 1][c + 1]);                <span class="comment">// bas droite</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">if</span> (r &lt; lastRow)                <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r + 1][c]);                    <span class="comment">// bas</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (r &lt; lastRow &amp;&amp; c)           <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r + 1][c - 1]);                <span class="comment">// bas gauche</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">if</span> (c)                          <a class="code" href="class_case.html">Case</a>-&gt;<a class="code" href="class_case.html#ab0c0625c607e73d402a25b11081c5385">AjoutVoisin</a>(_Cases[r][c - 1]);                    <span class="comment">// gauche</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">void</span> ChampDejeu::_verifVictoire()</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;{</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">//envoie le signal pour notifier que le nombre de Drapeaux a changé</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    emit <a class="code" href="class_champ_dejeu.html#abe8c713908f93c734c0f6b17cb5c6a96">ChangementNbDrapeau</a>(_BonsDrapeaux.size() + _MauvaisDrapeaux.size());</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (_etatJeux!=<a class="code" href="_etat_jeu_8h.html#ad0a6e6bb3698732b20786f284684be64ac8f133ce9cf545b6c38d26068be690d3">EtatJeu::Succes</a>){</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">if</span> (((_CaseDecouverts.size() ==(<span class="keywordtype">int</span>) (_nbCols * _nbLignes) -(<span class="keywordtype">int</span>) _numMines) &amp;&amp; _MauvaisDrapeaux.isEmpty())</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                || (_numMines == _BonsDrapeaux.size()))</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            emit <a class="code" href="class_champ_dejeu.html#a67cd19809ec6fefb1b85555ff2827742">Victoire</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            _etatJeux = <a class="code" href="_etat_jeu_8h.html#ad0a6e6bb3698732b20786f284684be64ac8f133ce9cf545b6c38d26068be690d3">EtatJeu::Succes</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            QTimer::singleShot(0, explosionTimer, [<span class="keyword">this</span>]()</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                explosionTimer-&gt;start(25);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            });</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keywordtype">void</span> ChampDejeu::Findejeu()</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    QTimer::singleShot(500, <span class="keyword">this</span>, [<span class="keyword">this</span>]()</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> wrong : _MauvaisDrapeaux)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;           wrong-&gt;AfficheResultat();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> mine : _mines)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            disconnect(mine, &amp;<a class="code" href="class_case.html#af3da0c626acc6ac47b2f9c4db7ffbeef">Case::Explosion</a>, <span class="keyword">this</span>, &amp;ChampDejeu::Findejeu);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">if</span> (!mine-&gt;AuneMarque()){</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                mine-&gt;reveal();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            mine-&gt;AfficheResultat();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        emit <a class="code" href="class_champ_dejeu.html#a5b8924e5a9acf75909101a1dcd4c88f7">Perdu</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    });</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    QTimer::singleShot(1000, explosionTimer, [<span class="keyword">this</span>]()</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        explosionTimer-&gt;start(25);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    });</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="class_champ_dejeu.html#aa172b8566a62f0a4b5bb02488a6eeed9">  176</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_champ_dejeu.html#aa172b8566a62f0a4b5bb02488a6eeed9">ChampDejeu::EpandageDesMines</a>(<a class="code" href="class_case.html">Case</a>* AuPremierClick)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    QList&lt;Case*&gt; Cases;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    QSet&lt;Case*&gt; _caseAnePasMiner;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    _caseAnePasMiner += AuPremierClick;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    _caseAnePasMiner += QSet&lt;Case*&gt;(AuPremierClick-&gt;<a class="code" href="class_case.html#a1c312c3a5f09d9cc6c6107b667833754">Voisinage</a>().begin(),AuPremierClick-&gt;<a class="code" href="class_case.html#a1c312c3a5f09d9cc6c6107b667833754">Voisinage</a>().end());</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> r = 0; r &lt; _nbLignes; ++r)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        _Cases += QList&lt;Case*&gt;{};</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c = 0; c &lt; _nbCols; ++c)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="comment">// Ajout au rang à moins que ce soit la première mine sur la quelle on a cliqué</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">auto</span> <a class="code" href="class_case.html">Case</a> = _Cases[r][c]; !_caseAnePasMiner.contains(<a class="code" href="class_case.html">Case</a>))</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                Cases += <a class="code" href="class_case.html">Case</a>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="comment">// Minage du terrain</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    std::random_device rd;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    std::mt19937 g(rd());</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    std::shuffle(Cases.begin(), Cases.end(), g);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; _numMines; ++i)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        Cases[i]-&gt;placerMine(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        _mines.insert(Cases[i]);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    emit <a class="code" href="class_champ_dejeu.html#a3f6e23941363c0c17c0c0c2a7e1deb8a">PretADemarrer</a>();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_case_html_aab1e9a9dd774559a05a99e3da038f778"><div class="ttname"><a href="class_case.html#aab1e9a9dd774559a05a99e3da038f778">Case::PremierClick</a></div><div class="ttdeci">void PremierClick(Case *)</div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a5b8924e5a9acf75909101a1dcd4c88f7"><div class="ttname"><a href="class_champ_dejeu.html#a5b8924e5a9acf75909101a1dcd4c88f7">ChampDejeu::Perdu</a></div><div class="ttdeci">void Perdu()</div></div>
+<div class="ttc" id="aclass_case_html_a1dbaee070a99d8128f90e55f568e54c6"><div class="ttname"><a href="class_case.html#a1dbaee070a99d8128f90e55f568e54c6">Case::SuppressionDrappeau</a></div><div class="ttdeci">void SuppressionDrappeau(bool)</div></div>
+<div class="ttc" id="aclass_case_html_a359406b8eb39c10d53453b776685e22b"><div class="ttname"><a href="class_case.html#a359406b8eb39c10d53453b776685e22b">Case::Inactivation</a></div><div class="ttdeci">void Inactivation()</div></div>
+<div class="ttc" id="aclass_case_html_ab0c0625c607e73d402a25b11081c5385"><div class="ttname"><a href="class_case.html#ab0c0625c607e73d402a25b11081c5385">Case::AjoutVoisin</a></div><div class="ttdeci">void AjoutVoisin(Case *Case)</div><div class="ttdef"><b>Definition:</b> <a href="_case_8cpp_source.html#l00039">Case.cpp:39</a></div></div>
+<div class="ttc" id="aclass_case_html_a1c312c3a5f09d9cc6c6107b667833754"><div class="ttname"><a href="class_case.html#a1c312c3a5f09d9cc6c6107b667833754">Case::Voisinage</a></div><div class="ttdeci">QList&lt; Case * &gt; &amp; Voisinage()</div><div class="ttdoc">Liste des cases qui contituent le voisinage.</div><div class="ttdef"><b>Definition:</b> <a href="_case_8cpp_source.html#l00134">Case.cpp:134</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a887031dceb90c1fd1f7dcb8cd6e9cf4d"><div class="ttname"><a href="class_champ_dejeu.html#a887031dceb90c1fd1f7dcb8cd6e9cf4d">ChampDejeu::ChampDejeu</a></div><div class="ttdeci">ChampDejeu(unsigned int nbLignes, unsigned int nbCols, unsigned int numMines, QWidget *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8cpp_source.html#l00009">ChampDeJeu.cpp:9</a></div></div>
+<div class="ttc" id="aclass_case_html_a1a155038c0b652efc9ae6f4f26a7232a"><div class="ttname"><a href="class_case.html#a1a155038c0b652efc9ae6f4f26a7232a">Case::PointDrapeau</a></div><div class="ttdeci">void PointDrapeau(bool)</div></div>
+<div class="ttc" id="aclass_case_html_adea3887c0e9c604041182e699368f7dd"><div class="ttname"><a href="class_case.html#adea3887c0e9c604041182e699368f7dd">Case::revealed</a></div><div class="ttdeci">void revealed()</div></div>
+<div class="ttc" id="aclass_case_html"><div class="ttname"><a href="class_case.html">Case</a></div><div class="ttdef"><b>Definition:</b> <a href="_case_8h_source.html#l00015">Case.h:16</a></div></div>
+<div class="ttc" id="a_etat_jeu_8h_html_ad0a6e6bb3698732b20786f284684be64ac8f133ce9cf545b6c38d26068be690d3"><div class="ttname"><a href="_etat_jeu_8h.html#ad0a6e6bb3698732b20786f284684be64ac8f133ce9cf545b6c38d26068be690d3">Succes</a></div><div class="ttdeci">@ Succes</div><div class="ttdef"><b>Definition:</b> <a href="_etat_jeu_8h_source.html#l00009">EtatJeu.h:9</a></div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a3f6e23941363c0c17c0c0c2a7e1deb8a"><div class="ttname"><a href="class_champ_dejeu.html#a3f6e23941363c0c17c0c0c2a7e1deb8a">ChampDejeu::PretADemarrer</a></div><div class="ttdeci">void PretADemarrer()</div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_abe8c713908f93c734c0f6b17cb5c6a96"><div class="ttname"><a href="class_champ_dejeu.html#abe8c713908f93c734c0f6b17cb5c6a96">ChampDejeu::ChangementNbDrapeau</a></div><div class="ttdeci">void ChangementNbDrapeau(unsigned int const nombre)</div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_a67cd19809ec6fefb1b85555ff2827742"><div class="ttname"><a href="class_champ_dejeu.html#a67cd19809ec6fefb1b85555ff2827742">ChampDejeu::Victoire</a></div><div class="ttdeci">void Victoire()</div></div>
+<div class="ttc" id="aclass_case_html_af3da0c626acc6ac47b2f9c4db7ffbeef"><div class="ttname"><a href="class_case.html#af3da0c626acc6ac47b2f9c4db7ffbeef">Case::Explosion</a></div><div class="ttdeci">void Explosion()</div></div>
+<div class="ttc" id="aclass_champ_dejeu_html_aa172b8566a62f0a4b5bb02488a6eeed9"><div class="ttname"><a href="class_champ_dejeu.html#aa172b8566a62f0a4b5bb02488a6eeed9">ChampDejeu::EpandageDesMines</a></div><div class="ttdeci">void EpandageDesMines(Case *firstClicked)</div><div class="ttdoc">Permet de Ditribuer au hazard les mines.</div><div class="ttdef"><b>Definition:</b> <a href="_champ_de_jeu_8cpp_source.html#l00176">ChampDeJeu.cpp:176</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
+</body>
+</html>

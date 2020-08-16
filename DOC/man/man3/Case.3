@@ -1,0 +1,287 @@
+.TH "Case" 3 "Dimanche 16 Août 2020" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Case
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Case\&.h>\fP
+.PP
+Est dérivée de QPushButton\&.
+.SS "Connecteurs publics"
+
+.in +1c
+.ti -1c
+.RI "void \fBincrementNbDrapeauAutour\fP ()"
+.br
+.RI "Incréménte le nombre de drapeaux autour d'elle\&. "
+.ti -1c
+.RI "void \fBdecrementNbDrapeauAutour\fP ()"
+.br
+.RI "Décrémente le nombre de drapeaux autour d'elle\&. "
+.ti -1c
+.RI "void \fBincrementNbMinesAutour\fP ()"
+.br
+.RI "Incrémente le nomre de mine autour d'elle\&. "
+.in -1c
+.SS "Signaux"
+
+.in +1c
+.ti -1c
+.RI "void \fBPremierClick\fP (\fBCase\fP *)"
+.br
+.ti -1c
+.RI "void \fBClickNormal\fP ()"
+.br
+.ti -1c
+.RI "void \fBClickDroit\fP ()"
+.br
+.ti -1c
+.RI "void \fBClickGaucheEtDroit\fP ()"
+.br
+.ti -1c
+.RI "void \fBPasDeClick\fP ()"
+.br
+.ti -1c
+.RI "void \fBExplosion\fP ()"
+.br
+.ti -1c
+.RI "void \fBreveal\fP ()"
+.br
+.ti -1c
+.RI "void \fBrevealed\fP ()"
+.br
+.ti -1c
+.RI "void \fBrevealNeighbors\fP ()"
+.br
+.ti -1c
+.RI "void \fBpreview\fP ()"
+.br
+.ti -1c
+.RI "void \fBunPreview\fP ()"
+.br
+.ti -1c
+.RI "void \fBunPreviewNeighbors\fP ()"
+.br
+.ti -1c
+.RI "void \fBPointDrapeau\fP (bool)"
+.br
+.ti -1c
+.RI "void \fBSuppressionDrappeau\fP (bool)"
+.br
+.ti -1c
+.RI "void \fBInactivation\fP ()"
+.br
+.in -1c
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBCase\fP (\fBPosition\fP \fBposition\fP, QWidget *parent=nullptr)"
+.br
+.ti -1c
+.RI "virtual \fB~Case\fP () override"
+.br
+.ti -1c
+.RI "void \fBAfficheResultat\fP ()"
+.br
+.RI "Corrige les Affichages à la fin de la partie\&. "
+.ti -1c
+.RI "void \fBAjoutVoisin\fP (\fBCase\fP *\fBCase\fP)"
+.br
+.ti -1c
+.RI "\fBPosition\fP \fBposition\fP () const"
+.br
+.ti -1c
+.RI "void \fBplacerMine\fP (bool val)"
+.br
+.ti -1c
+.RI "bool \fBEstMine\fP () const"
+.br
+.RI "Informe sur l'existence ou non d'une Mine\&. "
+.ti -1c
+.RI "bool \fBAuneMarque\fP () const"
+.br
+.RI "Informe sur l'existence ou non d'un marquage de drapeau\&. "
+.ti -1c
+.RI "bool \fBEstOuvert\fP () const"
+.br
+.ti -1c
+.RI "bool \fBisUnrevealed\fP () const"
+.br
+.ti -1c
+.RI "bool \fBAdesMinesAutour\fP () const"
+.br
+.RI "Informe sur l'existence de mines dans au moins l'une des cases voisines\&. "
+.ti -1c
+.RI "unsigned int \fBNbMinesAutour\fP () const"
+.br
+.RI "Informe sur le nombre de mines dans les cases voisines\&. "
+.ti -1c
+.RI "unsigned int \fBNbDrapeauAutour\fP () const"
+.br
+.RI "Retourne le nombre de drapeaux autour d'elle A la fin du jeux si chaque case a le même nombre de drapeaux autour égal au nombre de mine autour c'est que les mines ont bien été ifentifiées donc le jeu peut s'arrêter\&. "
+.ti -1c
+.RI "QList< \fBCase\fP * > & \fBVoisinage\fP ()"
+.br
+.RI "Liste des cases qui contituent le voisinage\&. "
+.ti -1c
+.RI "virtual void \fBmousePressEvent\fP (QMouseEvent *e) override"
+.br
+.ti -1c
+.RI "virtual void \fBmouseReleaseEvent\fP (QMouseEvent *e) override"
+.br
+.ti -1c
+.RI "virtual void \fBmouseMoveEvent\fP (QMouseEvent *e) override"
+.br
+.ti -1c
+.RI "virtual QSize \fBsizeHint\fP () const override"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Définition à la ligne 15 du fichier Case\&.h\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "Case::Case (\fBPosition\fP position, QWidget * parent = \fCnullptr\fP)"
+
+.PP
+Définition à la ligne 16 du fichier Case\&.cpp\&.
+.SS "Case::~Case ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Définition à la ligne 29 du fichier Case\&.cpp\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "bool Case::AdesMinesAutour () const"
+
+.PP
+Informe sur l'existence de mines dans au moins l'une des cases voisines\&. Si une case voisine est minée elle retourne Vrai 
+.PP
+Définition à la ligne 71 du fichier Case\&.cpp\&.
+.SS "void Case::AfficheResultat ()"
+
+.PP
+Corrige les Affichages à la fin de la partie\&. 
+.PP
+Définition à la ligne 349 du fichier Case\&.cpp\&.
+.SS "void Case::AjoutVoisin (\fBCase\fP * Case)"
+
+.PP
+Définition à la ligne 39 du fichier Case\&.cpp\&.
+.SS "bool Case::AuneMarque () const"
+
+.PP
+Informe sur l'existence ou non d'un marquage de drapeau\&. 
+.PP
+Définition à la ligne 94 du fichier Case\&.cpp\&.
+.SS "void Case::ClickDroit ()\fC [signal]\fP"
+
+.SS "void Case::ClickGaucheEtDroit ()\fC [signal]\fP"
+
+.SS "void Case::ClickNormal ()\fC [signal]\fP"
+
+.SS "void Case::decrementNbDrapeauAutour ()\fC [slot]\fP"
+
+.PP
+Décrémente le nombre de drapeaux autour d'elle\&. 
+.PP
+Définition à la ligne 127 du fichier Case\&.cpp\&.
+.SS "bool Case::EstMine () const"
+
+.PP
+Informe sur l'existence ou non d'une Mine\&. Si la case est minée elle retourne Vrai 
+.PP
+Définition à la ligne 62 du fichier Case\&.cpp\&.
+.SS "bool Case::EstOuvert () const"
+
+.PP
+Définition à la ligne 99 du fichier Case\&.cpp\&.
+.SS "void Case::Explosion ()\fC [signal]\fP"
+
+.SS "void Case::Inactivation ()\fC [signal]\fP"
+
+.SS "void Case::incrementNbDrapeauAutour ()\fC [slot]\fP"
+
+.PP
+Incréménte le nombre de drapeaux autour d'elle\&. 
+.PP
+Définition à la ligne 120 du fichier Case\&.cpp\&.
+.SS "void Case::incrementNbMinesAutour ()\fC [slot]\fP"
+
+.PP
+Incrémente le nomre de mine autour d'elle\&. 
+.PP
+Définition à la ligne 87 du fichier Case\&.cpp\&.
+.SS "bool Case::isUnrevealed () const"
+
+.PP
+Définition à la ligne 104 du fichier Case\&.cpp\&.
+.SS "void Case::mouseMoveEvent (QMouseEvent * e)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Définition à la ligne 170 du fichier Case\&.cpp\&.
+.SS "void Case::mousePressEvent (QMouseEvent * e)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Définition à la ligne 139 du fichier Case\&.cpp\&.
+.SS "void Case::mouseReleaseEvent (QMouseEvent * e)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Définition à la ligne 160 du fichier Case\&.cpp\&.
+.SS "unsigned int Case::NbDrapeauAutour () const"
+
+.PP
+Retourne le nombre de drapeaux autour d'elle A la fin du jeux si chaque case a le même nombre de drapeaux autour égal au nombre de mine autour c'est que les mines ont bien été ifentifiées donc le jeu peut s'arrêter\&. 
+.PP
+Définition à la ligne 113 du fichier Case\&.cpp\&.
+.SS "unsigned int Case::NbMinesAutour () const"
+
+.PP
+Informe sur le nombre de mines dans les cases voisines\&. Elle retour un Entier Positif 
+.PP
+Définition à la ligne 80 du fichier Case\&.cpp\&.
+.SS "void Case::PasDeClick ()\fC [signal]\fP"
+
+.SS "void Case::placerMine (bool val)"
+
+.PP
+Définition à la ligne 51 du fichier Case\&.cpp\&.
+.SS "void Case::PointDrapeau (bool)\fC [signal]\fP"
+
+.SS "\fBPosition\fP Case::position () const"
+
+.PP
+Définition à la ligne 46 du fichier Case\&.cpp\&.
+.SS "void Case::PremierClick (\fBCase\fP *)\fC [signal]\fP"
+
+.SS "void Case::preview ()\fC [signal]\fP"
+
+.SS "void Case::reveal ()\fC [signal]\fP"
+
+.SS "void Case::revealed ()\fC [signal]\fP"
+
+.SS "void Case::revealNeighbors ()\fC [signal]\fP"
+
+.SS "QSize Case::sizeHint () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Définition à la ligne 179 du fichier Case\&.cpp\&.
+.SS "void Case::SuppressionDrappeau (bool)\fC [signal]\fP"
+
+.SS "void Case::unPreview ()\fC [signal]\fP"
+
+.SS "void Case::unPreviewNeighbors ()\fC [signal]\fP"
+
+.SS "QList< \fBCase\fP * > & Case::Voisinage ()"
+
+.PP
+Liste des cases qui contituent le voisinage\&. 
+.PP
+Définition à la ligne 134 du fichier Case\&.cpp\&.
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Demineur à partir du code source\&.

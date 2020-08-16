@@ -1,0 +1,452 @@
+\hypertarget{class_case}{}\doxysection{Référence de la classe Case}
+\label{class_case}\index{Case@{Case}}
+
+
+{\ttfamily \#include $<$Case.\+h$>$}
+
+Graphe d\textquotesingle{}héritage de Case\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_case}
+\end{center}
+\end{figure}
+\doxysubsection*{Connecteurs publics}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_case_aec952bde95ed728c084dbc6d86bacdde}{increment\+Nb\+Drapeau\+Autour}} ()
+\begin{DoxyCompactList}\small\item\em Incréménte le nombre de drapeaux autour d\textquotesingle{}elle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_ac15d1507492c30950bb2e78c4c7fd51d}{decrement\+Nb\+Drapeau\+Autour}} ()
+\begin{DoxyCompactList}\small\item\em Décrémente le nombre de drapeaux autour d\textquotesingle{}elle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_a2e93a46a1bae52eff59bfb1786e00d68}{increment\+Nb\+Mines\+Autour}} ()
+\begin{DoxyCompactList}\small\item\em Incrémente le nomre de mine autour d\textquotesingle{}elle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Signaux}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_case_aab1e9a9dd774559a05a99e3da038f778}{Premier\+Click}} (\mbox{\hyperlink{class_case}{Case}} $\ast$)
+\item 
+void \mbox{\hyperlink{class_case_a438a74a8512922a330f01399b2e34b32}{Click\+Normal}} ()
+\item 
+void \mbox{\hyperlink{class_case_a659d4ae4d7d0ce13d1c73dcf80e673dd}{Click\+Droit}} ()
+\item 
+void \mbox{\hyperlink{class_case_a4bfac674828f3b78f98b073728e35e58}{Click\+Gauche\+Et\+Droit}} ()
+\item 
+void \mbox{\hyperlink{class_case_a5118d3f0f17d4ec92753549b76d0a514}{Pas\+De\+Click}} ()
+\item 
+void \mbox{\hyperlink{class_case_af3da0c626acc6ac47b2f9c4db7ffbeef}{Explosion}} ()
+\item 
+void \mbox{\hyperlink{class_case_af4fef1b84d56fb0f7f332ce0be99a388}{reveal}} ()
+\item 
+void \mbox{\hyperlink{class_case_adea3887c0e9c604041182e699368f7dd}{revealed}} ()
+\item 
+void \mbox{\hyperlink{class_case_a36877ef62ad4377aad2f15badb0a3e9e}{reveal\+Neighbors}} ()
+\item 
+void \mbox{\hyperlink{class_case_a5429eb3ccf54d754e11e35090f56a409}{preview}} ()
+\item 
+void \mbox{\hyperlink{class_case_a77a36650887ebad3f86da0785cf92932}{un\+Preview}} ()
+\item 
+void \mbox{\hyperlink{class_case_a0f4ec16a2d27b66047e344125597adb9}{un\+Preview\+Neighbors}} ()
+\item 
+void \mbox{\hyperlink{class_case_a1a155038c0b652efc9ae6f4f26a7232a}{Point\+Drapeau}} (bool)
+\item 
+void \mbox{\hyperlink{class_case_a1dbaee070a99d8128f90e55f568e54c6}{Suppression\+Drappeau}} (bool)
+\item 
+void \mbox{\hyperlink{class_case_a359406b8eb39c10d53453b776685e22b}{Inactivation}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_case_af9d3e14c51bd21411a8ed558dd473c84}{Case}} (\mbox{\hyperlink{struct_position}{Position}} \mbox{\hyperlink{class_case_a50595ba4b1d6f0682d6a4499bd86c9fa}{position}}, Q\+Widget $\ast$parent=nullptr)
+\item 
+virtual \mbox{\hyperlink{class_case_acb31d2c94d40801b305f9c8a23a5ecfd}{$\sim$\+Case}} () override
+\item 
+void \mbox{\hyperlink{class_case_a2ab84f1ccc3978eef274eaa487f6c676}{Affiche\+Resultat}} ()
+\begin{DoxyCompactList}\small\item\em Corrige les Affichages à la fin de la partie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_case_ab0c0625c607e73d402a25b11081c5385}{Ajout\+Voisin}} (\mbox{\hyperlink{class_case}{Case}} $\ast$\mbox{\hyperlink{class_case}{Case}})
+\item 
+\mbox{\hyperlink{struct_position}{Position}} \mbox{\hyperlink{class_case_a50595ba4b1d6f0682d6a4499bd86c9fa}{position}} () const
+\item 
+void \mbox{\hyperlink{class_case_ad53f0c1bf8a486c38c58c0dc80f3bf1d}{placer\+Mine}} (bool val)
+\item 
+bool \mbox{\hyperlink{class_case_aa90dd8e29fc8a19082bdce8723977770}{Est\+Mine}} () const
+\begin{DoxyCompactList}\small\item\em Informe sur l\textquotesingle{}existence ou non d\textquotesingle{}une Mine. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_a485a17b76986f9133c23ce3c62dfe18c}{Aune\+Marque}} () const
+\begin{DoxyCompactList}\small\item\em Informe sur l\textquotesingle{}existence ou non d\textquotesingle{}un marquage de drapeau. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_case_aced5a94a12e33708c032b0445bc3aa18}{Est\+Ouvert}} () const
+\item 
+bool \mbox{\hyperlink{class_case_a28ece713e2454a5d6346a4cee596a1e0}{is\+Unrevealed}} () const
+\item 
+bool \mbox{\hyperlink{class_case_a926a43e904cd4a7c25574c7686b849f7}{Ades\+Mines\+Autour}} () const
+\begin{DoxyCompactList}\small\item\em Informe sur l\textquotesingle{}existence de mines dans au moins l\textquotesingle{}une des cases voisines. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_case_a4516c1927c08d73f6131f96def8bfc02}{Nb\+Mines\+Autour}} () const
+\begin{DoxyCompactList}\small\item\em Informe sur le nombre de mines dans les cases voisines. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_case_a4cef62593efa34cff0bd07cea70074a1}{Nb\+Drapeau\+Autour}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de drapeaux autour d\textquotesingle{}elle A la fin du jeux si chaque case a le même nombre de drapeaux autour égal au nombre de mine autour c\textquotesingle{}est que les mines ont bien été ifentifiées donc le jeu peut s\textquotesingle{}arrêter. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{class_case}{Case}} $\ast$ $>$ \& \mbox{\hyperlink{class_case_a1c312c3a5f09d9cc6c6107b667833754}{Voisinage}} ()
+\begin{DoxyCompactList}\small\item\em Liste des cases qui contituent le voisinage. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_case_a7fa5d32e68f50543b03b864b6f691799}{mouse\+Press\+Event}} (Q\+Mouse\+Event $\ast$e) override
+\item 
+virtual void \mbox{\hyperlink{class_case_a8272b4428f7950a2589bb4b627acd938}{mouse\+Release\+Event}} (Q\+Mouse\+Event $\ast$e) override
+\item 
+virtual void \mbox{\hyperlink{class_case_ad28d4971d91b4328e4a4bcbbc687f5d5}{mouse\+Move\+Event}} (Q\+Mouse\+Event $\ast$e) override
+\item 
+virtual Q\+Size \mbox{\hyperlink{class_case_af6da791af1f563a48ecff738b588018e}{size\+Hint}} () const override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+
+
+Définition à la ligne 15 du fichier Case.\+h.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{class_case_af9d3e14c51bd21411a8ed558dd473c84}\label{class_case_af9d3e14c51bd21411a8ed558dd473c84}} 
+\index{Case@{Case}!Case@{Case}}
+\index{Case@{Case}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{Case()}{Case()}}
+{\footnotesize\ttfamily Case\+::\+Case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_position}{Position}}}]{position,  }\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne 16 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_acb31d2c94d40801b305f9c8a23a5ecfd}\label{class_case_acb31d2c94d40801b305f9c8a23a5ecfd}} 
+\index{Case@{Case}!````~Case@{$\sim$Case}}
+\index{````~Case@{$\sim$Case}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{$\sim$Case()}{~Case()}}
+{\footnotesize\ttfamily Case\+::$\sim$\+Case (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Définition à la ligne 29 du fichier Case.\+cpp.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_case_a926a43e904cd4a7c25574c7686b849f7}\label{class_case_a926a43e904cd4a7c25574c7686b849f7}} 
+\index{Case@{Case}!AdesMinesAutour@{AdesMinesAutour}}
+\index{AdesMinesAutour@{AdesMinesAutour}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{AdesMinesAutour()}{AdesMinesAutour()}}
+{\footnotesize\ttfamily bool Case\+::\+Ades\+Mines\+Autour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Informe sur l\textquotesingle{}existence de mines dans au moins l\textquotesingle{}une des cases voisines. 
+
+Si une case voisine est minée elle retourne Vrai 
+
+Définition à la ligne 71 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a2ab84f1ccc3978eef274eaa487f6c676}\label{class_case_a2ab84f1ccc3978eef274eaa487f6c676}} 
+\index{Case@{Case}!AfficheResultat@{AfficheResultat}}
+\index{AfficheResultat@{AfficheResultat}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{AfficheResultat()}{AfficheResultat()}}
+{\footnotesize\ttfamily void Case\+::\+Affiche\+Resultat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Corrige les Affichages à la fin de la partie. 
+
+
+
+Définition à la ligne 349 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_ab0c0625c607e73d402a25b11081c5385}\label{class_case_ab0c0625c607e73d402a25b11081c5385}} 
+\index{Case@{Case}!AjoutVoisin@{AjoutVoisin}}
+\index{AjoutVoisin@{AjoutVoisin}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{AjoutVoisin()}{AjoutVoisin()}}
+{\footnotesize\ttfamily void Case\+::\+Ajout\+Voisin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_case}{Case}} $\ast$}]{Case }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne 39 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a485a17b76986f9133c23ce3c62dfe18c}\label{class_case_a485a17b76986f9133c23ce3c62dfe18c}} 
+\index{Case@{Case}!AuneMarque@{AuneMarque}}
+\index{AuneMarque@{AuneMarque}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{AuneMarque()}{AuneMarque()}}
+{\footnotesize\ttfamily bool Case\+::\+Aune\+Marque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Informe sur l\textquotesingle{}existence ou non d\textquotesingle{}un marquage de drapeau. 
+
+
+
+Définition à la ligne 94 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a659d4ae4d7d0ce13d1c73dcf80e673dd}\label{class_case_a659d4ae4d7d0ce13d1c73dcf80e673dd}} 
+\index{Case@{Case}!ClickDroit@{ClickDroit}}
+\index{ClickDroit@{ClickDroit}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{ClickDroit}{ClickDroit}}
+{\footnotesize\ttfamily void Case\+::\+Click\+Droit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a4bfac674828f3b78f98b073728e35e58}\label{class_case_a4bfac674828f3b78f98b073728e35e58}} 
+\index{Case@{Case}!ClickGaucheEtDroit@{ClickGaucheEtDroit}}
+\index{ClickGaucheEtDroit@{ClickGaucheEtDroit}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{ClickGaucheEtDroit}{ClickGaucheEtDroit}}
+{\footnotesize\ttfamily void Case\+::\+Click\+Gauche\+Et\+Droit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a438a74a8512922a330f01399b2e34b32}\label{class_case_a438a74a8512922a330f01399b2e34b32}} 
+\index{Case@{Case}!ClickNormal@{ClickNormal}}
+\index{ClickNormal@{ClickNormal}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{ClickNormal}{ClickNormal}}
+{\footnotesize\ttfamily void Case\+::\+Click\+Normal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_ac15d1507492c30950bb2e78c4c7fd51d}\label{class_case_ac15d1507492c30950bb2e78c4c7fd51d}} 
+\index{Case@{Case}!decrementNbDrapeauAutour@{decrementNbDrapeauAutour}}
+\index{decrementNbDrapeauAutour@{decrementNbDrapeauAutour}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{decrementNbDrapeauAutour}{decrementNbDrapeauAutour}}
+{\footnotesize\ttfamily void Case\+::decrement\+Nb\+Drapeau\+Autour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Décrémente le nombre de drapeaux autour d\textquotesingle{}elle. 
+
+
+
+Définition à la ligne 127 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_aa90dd8e29fc8a19082bdce8723977770}\label{class_case_aa90dd8e29fc8a19082bdce8723977770}} 
+\index{Case@{Case}!EstMine@{EstMine}}
+\index{EstMine@{EstMine}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{EstMine()}{EstMine()}}
+{\footnotesize\ttfamily bool Case\+::\+Est\+Mine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Informe sur l\textquotesingle{}existence ou non d\textquotesingle{}une Mine. 
+
+Si la case est minée elle retourne Vrai 
+
+Définition à la ligne 62 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_aced5a94a12e33708c032b0445bc3aa18}\label{class_case_aced5a94a12e33708c032b0445bc3aa18}} 
+\index{Case@{Case}!EstOuvert@{EstOuvert}}
+\index{EstOuvert@{EstOuvert}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{EstOuvert()}{EstOuvert()}}
+{\footnotesize\ttfamily bool Case\+::\+Est\+Ouvert (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Définition à la ligne 99 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_af3da0c626acc6ac47b2f9c4db7ffbeef}\label{class_case_af3da0c626acc6ac47b2f9c4db7ffbeef}} 
+\index{Case@{Case}!Explosion@{Explosion}}
+\index{Explosion@{Explosion}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{Explosion}{Explosion}}
+{\footnotesize\ttfamily void Case\+::\+Explosion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a359406b8eb39c10d53453b776685e22b}\label{class_case_a359406b8eb39c10d53453b776685e22b}} 
+\index{Case@{Case}!Inactivation@{Inactivation}}
+\index{Inactivation@{Inactivation}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{Inactivation}{Inactivation}}
+{\footnotesize\ttfamily void Case\+::\+Inactivation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_aec952bde95ed728c084dbc6d86bacdde}\label{class_case_aec952bde95ed728c084dbc6d86bacdde}} 
+\index{Case@{Case}!incrementNbDrapeauAutour@{incrementNbDrapeauAutour}}
+\index{incrementNbDrapeauAutour@{incrementNbDrapeauAutour}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{incrementNbDrapeauAutour}{incrementNbDrapeauAutour}}
+{\footnotesize\ttfamily void Case\+::increment\+Nb\+Drapeau\+Autour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Incréménte le nombre de drapeaux autour d\textquotesingle{}elle. 
+
+
+
+Définition à la ligne 120 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a2e93a46a1bae52eff59bfb1786e00d68}\label{class_case_a2e93a46a1bae52eff59bfb1786e00d68}} 
+\index{Case@{Case}!incrementNbMinesAutour@{incrementNbMinesAutour}}
+\index{incrementNbMinesAutour@{incrementNbMinesAutour}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{incrementNbMinesAutour}{incrementNbMinesAutour}}
+{\footnotesize\ttfamily void Case\+::increment\+Nb\+Mines\+Autour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Incrémente le nomre de mine autour d\textquotesingle{}elle. 
+
+
+
+Définition à la ligne 87 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a28ece713e2454a5d6346a4cee596a1e0}\label{class_case_a28ece713e2454a5d6346a4cee596a1e0}} 
+\index{Case@{Case}!isUnrevealed@{isUnrevealed}}
+\index{isUnrevealed@{isUnrevealed}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{isUnrevealed()}{isUnrevealed()}}
+{\footnotesize\ttfamily bool Case\+::is\+Unrevealed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Définition à la ligne 104 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_ad28d4971d91b4328e4a4bcbbc687f5d5}\label{class_case_ad28d4971d91b4328e4a4bcbbc687f5d5}} 
+\index{Case@{Case}!mouseMoveEvent@{mouseMoveEvent}}
+\index{mouseMoveEvent@{mouseMoveEvent}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{mouseMoveEvent()}{mouseMoveEvent()}}
+{\footnotesize\ttfamily void Case\+::mouse\+Move\+Event (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Définition à la ligne 170 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a7fa5d32e68f50543b03b864b6f691799}\label{class_case_a7fa5d32e68f50543b03b864b6f691799}} 
+\index{Case@{Case}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily void Case\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Définition à la ligne 139 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a8272b4428f7950a2589bb4b627acd938}\label{class_case_a8272b4428f7950a2589bb4b627acd938}} 
+\index{Case@{Case}!mouseReleaseEvent@{mouseReleaseEvent}}
+\index{mouseReleaseEvent@{mouseReleaseEvent}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{mouseReleaseEvent()}{mouseReleaseEvent()}}
+{\footnotesize\ttfamily void Case\+::mouse\+Release\+Event (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Définition à la ligne 160 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a4cef62593efa34cff0bd07cea70074a1}\label{class_case_a4cef62593efa34cff0bd07cea70074a1}} 
+\index{Case@{Case}!NbDrapeauAutour@{NbDrapeauAutour}}
+\index{NbDrapeauAutour@{NbDrapeauAutour}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{NbDrapeauAutour()}{NbDrapeauAutour()}}
+{\footnotesize\ttfamily unsigned int Case\+::\+Nb\+Drapeau\+Autour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nombre de drapeaux autour d\textquotesingle{}elle A la fin du jeux si chaque case a le même nombre de drapeaux autour égal au nombre de mine autour c\textquotesingle{}est que les mines ont bien été ifentifiées donc le jeu peut s\textquotesingle{}arrêter. 
+
+
+
+Définition à la ligne 113 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a4516c1927c08d73f6131f96def8bfc02}\label{class_case_a4516c1927c08d73f6131f96def8bfc02}} 
+\index{Case@{Case}!NbMinesAutour@{NbMinesAutour}}
+\index{NbMinesAutour@{NbMinesAutour}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{NbMinesAutour()}{NbMinesAutour()}}
+{\footnotesize\ttfamily unsigned int Case\+::\+Nb\+Mines\+Autour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Informe sur le nombre de mines dans les cases voisines. 
+
+Elle retour un Entier Positif 
+
+Définition à la ligne 80 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a5118d3f0f17d4ec92753549b76d0a514}\label{class_case_a5118d3f0f17d4ec92753549b76d0a514}} 
+\index{Case@{Case}!PasDeClick@{PasDeClick}}
+\index{PasDeClick@{PasDeClick}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{PasDeClick}{PasDeClick}}
+{\footnotesize\ttfamily void Case\+::\+Pas\+De\+Click (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_ad53f0c1bf8a486c38c58c0dc80f3bf1d}\label{class_case_ad53f0c1bf8a486c38c58c0dc80f3bf1d}} 
+\index{Case@{Case}!placerMine@{placerMine}}
+\index{placerMine@{placerMine}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{placerMine()}{placerMine()}}
+{\footnotesize\ttfamily void Case\+::placer\+Mine (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne 51 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a1a155038c0b652efc9ae6f4f26a7232a}\label{class_case_a1a155038c0b652efc9ae6f4f26a7232a}} 
+\index{Case@{Case}!PointDrapeau@{PointDrapeau}}
+\index{PointDrapeau@{PointDrapeau}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{PointDrapeau}{PointDrapeau}}
+{\footnotesize\ttfamily void Case\+::\+Point\+Drapeau (\begin{DoxyParamCaption}\item[{bool}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a50595ba4b1d6f0682d6a4499bd86c9fa}\label{class_case_a50595ba4b1d6f0682d6a4499bd86c9fa}} 
+\index{Case@{Case}!position@{position}}
+\index{position@{position}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{position()}{position()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_position}{Position}} Case\+::position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Définition à la ligne 46 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_aab1e9a9dd774559a05a99e3da038f778}\label{class_case_aab1e9a9dd774559a05a99e3da038f778}} 
+\index{Case@{Case}!PremierClick@{PremierClick}}
+\index{PremierClick@{PremierClick}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{PremierClick}{PremierClick}}
+{\footnotesize\ttfamily void Case\+::\+Premier\+Click (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_case}{Case}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a5429eb3ccf54d754e11e35090f56a409}\label{class_case_a5429eb3ccf54d754e11e35090f56a409}} 
+\index{Case@{Case}!preview@{preview}}
+\index{preview@{preview}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{preview}{preview}}
+{\footnotesize\ttfamily void Case\+::preview (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_af4fef1b84d56fb0f7f332ce0be99a388}\label{class_case_af4fef1b84d56fb0f7f332ce0be99a388}} 
+\index{Case@{Case}!reveal@{reveal}}
+\index{reveal@{reveal}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{reveal}{reveal}}
+{\footnotesize\ttfamily void Case\+::reveal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_adea3887c0e9c604041182e699368f7dd}\label{class_case_adea3887c0e9c604041182e699368f7dd}} 
+\index{Case@{Case}!revealed@{revealed}}
+\index{revealed@{revealed}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{revealed}{revealed}}
+{\footnotesize\ttfamily void Case\+::revealed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a36877ef62ad4377aad2f15badb0a3e9e}\label{class_case_a36877ef62ad4377aad2f15badb0a3e9e}} 
+\index{Case@{Case}!revealNeighbors@{revealNeighbors}}
+\index{revealNeighbors@{revealNeighbors}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{revealNeighbors}{revealNeighbors}}
+{\footnotesize\ttfamily void Case\+::reveal\+Neighbors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_af6da791af1f563a48ecff738b588018e}\label{class_case_af6da791af1f563a48ecff738b588018e}} 
+\index{Case@{Case}!sizeHint@{sizeHint}}
+\index{sizeHint@{sizeHint}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{sizeHint()}{sizeHint()}}
+{\footnotesize\ttfamily Q\+Size Case\+::size\+Hint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Définition à la ligne 179 du fichier Case.\+cpp.
+
+\mbox{\Hypertarget{class_case_a1dbaee070a99d8128f90e55f568e54c6}\label{class_case_a1dbaee070a99d8128f90e55f568e54c6}} 
+\index{Case@{Case}!SuppressionDrappeau@{SuppressionDrappeau}}
+\index{SuppressionDrappeau@{SuppressionDrappeau}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{SuppressionDrappeau}{SuppressionDrappeau}}
+{\footnotesize\ttfamily void Case\+::\+Suppression\+Drappeau (\begin{DoxyParamCaption}\item[{bool}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a77a36650887ebad3f86da0785cf92932}\label{class_case_a77a36650887ebad3f86da0785cf92932}} 
+\index{Case@{Case}!unPreview@{unPreview}}
+\index{unPreview@{unPreview}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{unPreview}{unPreview}}
+{\footnotesize\ttfamily void Case\+::un\+Preview (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a0f4ec16a2d27b66047e344125597adb9}\label{class_case_a0f4ec16a2d27b66047e344125597adb9}} 
+\index{Case@{Case}!unPreviewNeighbors@{unPreviewNeighbors}}
+\index{unPreviewNeighbors@{unPreviewNeighbors}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{unPreviewNeighbors}{unPreviewNeighbors}}
+{\footnotesize\ttfamily void Case\+::un\+Preview\+Neighbors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\mbox{\Hypertarget{class_case_a1c312c3a5f09d9cc6c6107b667833754}\label{class_case_a1c312c3a5f09d9cc6c6107b667833754}} 
+\index{Case@{Case}!Voisinage@{Voisinage}}
+\index{Voisinage@{Voisinage}!Case@{Case}}
+\doxysubsubsection{\texorpdfstring{Voisinage()}{Voisinage()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{class_case}{Case}} $\ast$ $>$ \& Case\+::\+Voisinage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Liste des cases qui contituent le voisinage. 
+
+
+
+Définition à la ligne 134 du fichier Case.\+cpp.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_case_8h}{Case.\+h}}\item 
+\mbox{\hyperlink{_case_8cpp}{Case.\+cpp}}\end{DoxyCompactItemize}

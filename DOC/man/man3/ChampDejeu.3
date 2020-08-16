@@ -1,0 +1,93 @@
+.TH "ChampDejeu" 3 "Dimanche 16 Août 2020" "Demineur" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ChampDejeu
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ChampDeJeu\&.h>\fP
+.PP
+Est dérivée de QFrame\&.
+.SS "Connecteurs publics"
+
+.in +1c
+.ti -1c
+.RI "void \fBEpandageDesMines\fP (\fBCase\fP *firstClicked)"
+.br
+.RI "Permet de Ditribuer au hazard les mines\&. "
+.in -1c
+.SS "Signaux"
+
+.in +1c
+.ti -1c
+.RI "void \fBPretADemarrer\fP ()"
+.br
+.ti -1c
+.RI "void \fBVictoire\fP ()"
+.br
+.ti -1c
+.RI "void \fBPerdu\fP ()"
+.br
+.ti -1c
+.RI "void \fBChangementNbDrapeau\fP (unsigned int const nombre)"
+.br
+.in -1c
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBChampDejeu\fP (unsigned int \fBnbLignes\fP, unsigned int \fBnbCols\fP, unsigned int \fBnumMines\fP, QWidget *parent=nullptr)"
+.br
+.ti -1c
+.RI "unsigned int \fBnbCols\fP () const"
+.br
+.ti -1c
+.RI "unsigned int \fBnbLignes\fP () const"
+.br
+.ti -1c
+.RI "unsigned int \fBnumMines\fP () const"
+.br
+.in -1c
+.SH "Description détaillée"
+.PP 
+Définition à la ligne 12 du fichier ChampDeJeu\&.h\&.
+.SH "Documentation des constructeurs et destructeur"
+.PP 
+.SS "ChampDejeu::ChampDejeu (unsigned int nbLignes, unsigned int nbCols, unsigned int numMines, QWidget * parent = \fCnullptr\fP)"
+
+.PP
+Définition à la ligne 9 du fichier ChampDeJeu\&.cpp\&.
+.SH "Documentation des fonctions membres"
+.PP 
+.SS "void ChampDejeu::ChangementNbDrapeau (unsigned int const nombre)\fC [signal]\fP"
+
+.SS "void ChampDejeu::EpandageDesMines (\fBCase\fP * AuPremierClick)\fC [slot]\fP"
+
+.PP
+Permet de Ditribuer au hazard les mines\&. 
+.PP
+Définition à la ligne 176 du fichier ChampDeJeu\&.cpp\&.
+.SS "unsigned int ChampDejeu::nbCols () const\fC [inline]\fP"
+
+.PP
+Définition à la ligne 18 du fichier ChampDeJeu\&.h\&.
+.SS "unsigned int ChampDejeu::nbLignes () const\fC [inline]\fP"
+
+.PP
+Définition à la ligne 19 du fichier ChampDeJeu\&.h\&.
+.SS "unsigned int ChampDejeu::numMines () const\fC [inline]\fP"
+
+.PP
+Définition à la ligne 20 du fichier ChampDeJeu\&.h\&.
+.SS "void ChampDejeu::Perdu ()\fC [signal]\fP"
+
+.SS "void ChampDejeu::PretADemarrer ()\fC [signal]\fP"
+
+.SS "void ChampDejeu::Victoire ()\fC [signal]\fP"
+
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour Demineur à partir du code source\&.

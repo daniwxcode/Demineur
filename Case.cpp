@@ -54,27 +54,43 @@ void Case::placerMine(bool val)
     for (auto voisin : _voisins)
         voisin->incrementNbMinesAutour();
 }
-
+/*!
+    *  \brief Informe sur l'existence ou non d'une Mine
+    *
+    *  Si la case est minée elle retourne Vrai
+    */
 bool Case::EstMine() const
 {
     return _isMine;
 }
-
+/*!
+    *  \brief Informe sur l'existence de mines dans au moins l'une des cases voisines
+    *
+    *  Si une case voisine est minée elle retourne Vrai
+    */
 bool Case::AdesMinesAutour() const
 {
     return _NbMinesAutour;
 }
-
+/*!
+    *  \brief Informe sur le nombre de mines dans les cases voisines
+    *
+    *  Elle retour un Entier Positif
+    */
 unsigned int Case::NbMinesAutour() const
 {
     return _NbMinesAutour;
 }
-
+/*!
+    *  \brief Incrémente le nomre de mine autour d'elle
+    */
 void Case::incrementNbMinesAutour()
 {
     ++_NbMinesAutour;
 }
-
+/*!
+    *  \brief Informe sur l'existence ou non d'un marquage de drapeau
+    */
 bool Case::AuneMarque() const
 {
     return _machine.configuration().contains(ModeDrapeauPointe);
@@ -89,22 +105,32 @@ bool Case::isUnrevealed() const
 {
     return _machine.configuration().contains(ModeNormal);
 }
-
+/*!
+    *  \brief Retourne le nombre de drapeaux autour d'elle
+    * A la fin du jeux si chaque case a le même nombre de drapeaux autour égal au  nombre de mine autour c'est
+    * que les mines ont bien été ifentifiées donc le jeu peut s'arrêter
+    */
 unsigned int Case::NbDrapeauAutour() const
 {
     return _NbDrapeauAutour;
 }
-
+/*!
+    *  \brief Incréménte le nombre de drapeaux autour d'elle
+    */
 void Case::incrementNbDrapeauAutour()
 {
     ++_NbDrapeauAutour;
 }
-
+/*!
+    *  \brief Décrémente le nombre de drapeaux autour d'elle
+    */
 void Case::decrementNbDrapeauAutour()
 {
     --_NbDrapeauAutour;
 }
-
+/*!
+    *  \brief Liste des cases qui contituent le voisinage
+    */
 QList<Case*>& Case::Voisinage()
 {
     return _voisins;
@@ -154,6 +180,13 @@ QSize Case::sizeHint() const
 {
     return Dimension;
 }
+/*!
+    *  \brief Configuration de la Machine des Etats d'une case
+    *
+    *  Configuration de la machine qui suit les Etats et les transitions possible sur
+    * une Case
+
+    */
 
 void Case::ConfigGestionEtatCase()
 {
@@ -267,6 +300,11 @@ void Case::ConfigGestionEtatCase()
     _machine.start();
 }
 
+/*!
+    *  \brief Gesstion de l'affichage des Indices
+    *
+    *  Elle permet d'afficher le nombre de Mines autour avec des couleurs différentes
+    */
 void Case::Afficher()
 {
     QString color;
@@ -304,6 +342,9 @@ void Case::Afficher()
         QPushButton::setText(QString::number(_NbMinesAutour));
 }
 
+/*!
+    *  \brief Corrige les Affichages à la fin de la partie
+    */
 
 void Case:: AfficheResultat(){
     if(EstMine()){
