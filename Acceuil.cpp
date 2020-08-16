@@ -1,5 +1,4 @@
 #include "Acceuil.h"
-#include "ui_mainwindow.h"
 #include "Horloge.h"
 #include "ChampDeJeu.h"
 #include "Case.h"
@@ -14,88 +13,82 @@
 #include <QSettings>
 #include <QScopedArrayPointer>
 
-
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+Acceuil::Acceuil(QWidget* parent)
+    : QMainWindow(parent),
+      CadrePrincipal(nullptr)
 {
-    ui->setupUi(this);
-    setupStateMachine();
+    ConfigMachineEtat();
     miseEnPlaceMenus();
 
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-void MainWindow::setupStateMachine()
+
+void Acceuil::ConfigMachineEtat()
 {
     //Gestion des Etats de l'application
     m_machine = new QStateMachine;
+    EtatNonDemarre = new QState;
+    EtatEnCours = new QState;
+    EtatVictorieux = new QState;
+    EtatPartiePerdue = new QState;
 
-    unstartedState = new QState;
-    inProgressState = new QState;
-    victoryState = new QState;
-    defeatState = new QState;
+    // logique des état dans lesquels l'application peut se retrouver
 
-    unstartedState->addTransition(this, &MainWindow::demarrerJeu, inProgressState);
+    //1- Demarrer pour devenir une partie en Cours
+    EtatNonDemarre->addTransition(this, &Acceuil::demarrerJeu, EtatEnCours);
+    //2- Une partie en Cours peut être gagnée
+    EtatEnCours->addTransition(this, &Acceuil::victoire, EtatVictorieux);
+    //3- Une partie en Cours peut être perdue
+    EtatEnCours->addTransition(this, &Acceuil::echec, EtatPartiePerdue);
+    //4- Une partie en Cours peut être abandonnée
+    EtatEnCours->addTransition(this, &Acceuil::DemarrerNouveuJeu, EtatNonDemarre);
 
-    inProgressState->addTransition(this, &MainWindow::victoire, victoryState);
-    inProgressState->addTransition(this, &MainWindow::echec, defeatState);
-    inProgressState->addTransition(this, &MainWindow::DemarrerNouveuJeu, unstartedState);
+    //5- Après une victoire ou une défaite on peut toujours reprendre une nouvelle partie
+    EtatVictorieux->addTransition(this, &Acceuil::DemarrerNouveuJeu, EtatNonDemarre);
+    EtatPartiePerdue->addTransition(this, &Acceuil::DemarrerNouveuJeu, EtatNonDemarre);
 
-    victoryState->addTransition(this, &MainWindow::DemarrerNouveuJeu, unstartedState);
 
-    defeatState->addTransition(this, &MainWindow::DemarrerNouveuJeu, unstartedState);
-
-    connect(unstartedState, &QState::entered, [this]()
+    connect(EtatNonDemarre, &QState::entered, [this]()
     {
         initialisationJeux();
     });
 
-    connect(inProgressState, &QState::entered, [this]()
+    connect(EtatEnCours, &QState::entered, [this]()
     {
         horlogeJeux->start();
     });
 
-    connect(victoryState, &QState::entered, [this]()
+    connect(EtatVictorieux, &QState::entered, [this]()
     {
         horlogeJeux->stop();
-        QMessageBox msgBox;
-    //horloge->time()
-        msgBox.setText( tr("Félicitations! <br> Vous avez Réussi!<br>Temps:"));
-        msgBox.exec();
+        QMessageBox::information(this, tr("Démineur"),
+         tr("Félicitations! <br> Vous avez Réussi!<br>"));
     });
 
-    connect(defeatState, &QState::entered, [this]()
+    connect(EtatPartiePerdue, &QState::entered, [this]()
     {
-
-        QMessageBox msgBox;
-        msgBox.setText( tr("Vous Avez Perdu"));
-        msgBox.exec();
         horlogeJeux->stop();
+        QMessageBox::critical(this, tr("Démineur"),
+         tr("Vous Avez Perdu :("));
     });
-
-    m_machine->addState(unstartedState);
-    m_machine->addState(inProgressState);
-    m_machine->addState(victoryState);
-    m_machine->addState(defeatState);
-
-    m_machine->setInitialState(unstartedState);
+    //Enregistrement des Etats
+    m_machine->addState(EtatNonDemarre);
+    m_machine->addState(EtatEnCours);
+    m_machine->addState(EtatVictorieux);
+    m_machine->addState(EtatPartiePerdue);
+    m_machine->setInitialState(EtatNonDemarre);
     m_machine->start();
 }
 
 
-
-void MainWindow::miseEnPlaceMenus()
+void Acceuil::miseEnPlaceMenus()
 {
     //Ajout du sousmenu Nouveau Jeu
     menuJeu = new QMenu(tr("Jeux"));
      //option Nouveau
     actionNouveauJeu = new QAction(tr("Nouveau"));
     actionNouveauJeu->setShortcut(QKeySequence(Qt::Key_F2));
-    connect(actionNouveauJeu, &QAction::triggered, this, &MainWindow::demarrerJeu);
+    connect(actionNouveauJeu, &QAction::triggered, this, &Acceuil::DemarrerNouveuJeu);
     menuJeu->addAction(actionNouveauJeu);
 
     //Ajout du sousmenu de choix du niveau
@@ -130,21 +123,13 @@ void MainWindow::miseEnPlaceMenus()
     niveauMenu->addAction(expertAction);
 
 
-
-    //Ajout du sous-menu d'Apropos
-    menuApropos = new QMenu(tr("?"));
-    aProposAction = new QAction(tr("?"));
-    menuApropos->addAction(aProposAction);
-
-
 // Ajout des sous-menus au Menu
     this->menuBar()->addMenu(menuJeu);
     this->menuBar()->addMenu(niveauMenu);
-    this->menuBar()->addMenu(menuApropos);
     defNiveau(Niveau::Facile);
 }
 
-void MainWindow::initialisationJeux(){
+void Acceuil::initialisationJeux(){
      // creation du chmps de jeu
     QFrame* _cadrePrincipal = new QFrame(this);
     auto _planPrincipal = new QVBoxLayout;
@@ -157,20 +142,13 @@ void MainWindow::initialisationJeux(){
    _cadreInfo->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::MinimumExpanding));
 
     // Ajout du jeu
-   champDejeu = new ChampDejeu(nbLigne, nbCols, nbMines, _cadrePrincipal);
-  connect(champDejeu, &ChampDejeu::initialized, this, &MainWindow::demarrerJeu, Qt::UniqueConnection);
-  connect(champDejeu, &ChampDejeu::flagCountChanged, compteurDeMines, &CompteurDeMine::SetNombreDrapeau, Qt::UniqueConnection);
-  connect(champDejeu, &ChampDejeu::Victoire, this, &MainWindow::victoire, Qt::UniqueConnection);
-  connect(champDejeu, &ChampDejeu::defeat, this, &MainWindow::echec, Qt::UniqueConnection);
+  champDejeu = new ChampDejeu(nbLigne, nbCols, nbMines, _cadrePrincipal);
+  connect(champDejeu, &ChampDejeu::PretADemarrer, this, &Acceuil::demarrerJeu, Qt::UniqueConnection);
+  connect(champDejeu, &ChampDejeu::ChangementNbDrapeau, compteurDeMines, &CompteurDeMine::SetNombreDrapeau, Qt::UniqueConnection);
+  connect(champDejeu, &ChampDejeu::Victoire, this, &Acceuil::victoire, Qt::UniqueConnection);
+  connect(champDejeu, &ChampDejeu::Perdu, this, &Acceuil::echec, Qt::UniqueConnection);
 
-
-   btnNouveauJeu = new QPushButton(_cadrePrincipal);
-   btnNouveauJeu->setMinimumSize(35, 35);
-   btnNouveauJeu->setIconSize(QSize(30, 30));
-   btnNouveauJeu->setText(":)");
- //  connect(btnNouveauJeu, &QPushButton::clicked, this, &MainWindow::btnNouveauJeu, Qt::UniqueConnection);
-   _cadreInfo->addWidget(btnNouveauJeu);
-   _cadreInfo->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::MinimumExpanding));
+  _cadreInfo->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::MinimumExpanding));
 
 
    // Ajout de l'horloge
@@ -193,9 +171,8 @@ void MainWindow::initialisationJeux(){
     this->setCentralWidget(_cadrePrincipal);
 
 
-
 }
-void MainWindow::defNiveau(Niveau niveau){
+void Acceuil::defNiveau(Niveau niveau){
     this->niveau = niveau;
 
     switch (niveau)
@@ -221,7 +198,11 @@ void MainWindow::defNiveau(Niveau niveau){
     default:
         break;
     }
+    DemarrerNouveuJeu();
+}
 
+void Acceuil:: DemarrerNouveuJeu(){
+    ConfigMachineEtat();
     initialisationJeux();
     adjustSize();
 }

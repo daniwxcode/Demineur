@@ -33,7 +33,7 @@ public:
     unsigned int NbMinesAutour() const;
     unsigned int NbDrapeauAutour() const;
 
-    QList<Case*>& neighbors();
+    QList<Case*>& Voisinage();
 
     virtual void mousePressEvent(QMouseEvent* e) override;
     virtual void mouseReleaseEvent(QMouseEvent* e) override;
@@ -50,29 +50,29 @@ public slots:
 
 signals:
 
-    void firstClick(Case*);
-    void leftClicked();
-    void rightClicked();
-    void bothClicked();
-    void unClicked();
-    void detonated();
+    void PremierClick(Case*);
+    void ClickNormal();
+    void ClickDroit();
+    void ClickGaucheEtDroit();
+    void PasDeClick();
+    void Explosion();
     void reveal();
     void revealed();
     void revealNeighbors();
     void preview();
     void unPreview();
     void unPreviewNeighbors();
-    void flagged(bool);
-    void unFlagged(bool);
-    void disable();
+    void PointDrapeau(bool);
+    void SuppressionDrappeau(bool);
+    void Inactivation();
 
 private:
 
-    void createStateMachine();
+    void ConfigGestionEtatCase();
 
 
 private:
-    void setText();
+    void Afficher();
     bool _isMine;
     unsigned int _NbMinesAutour;
     unsigned int _NbDrapeauAutour;
@@ -85,13 +85,13 @@ private:
     static bool _firstClick;
 
     QStateMachine _machine;
-    QState* unrevealedState;
-    QState* previewState;
-    QState* previewNeighborsState;
-    QState* flaggedState;
-    QState* revealedState;
-    QState* revealNeighborsState;
-    QFinalState* disabledState;
+    QState* ModeNormal;
+    QState* ModeAppercu;
+    QState* AppercuDesVoisins;
+    QState* ModeDrapeauPointe;
+    QState* ModeDecouvert;
+    QState* ModeVoisinsDecouverts;
+    QFinalState* ModeInactive;
 };
 #endif
 // CASE_H

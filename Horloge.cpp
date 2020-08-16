@@ -6,7 +6,7 @@ Horloge::Horloge(QWidget* parent /*= nullptr*/)
 {
     this->setDigitCount(4);
     this->display(0);
-    this->setStyleSheet(".QLCDNumber { border: 2px inset gray; background-color: black; color: red; }");
+    this->setStyleSheet(".QLCDNumber { border: 2px inset gray; }");
     this->setSegmentStyle(QLCDNumber::Flat);
     this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }

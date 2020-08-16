@@ -20,7 +20,7 @@ Case::Case(Position position, QWidget* parent /*= nullptr*/)
     , _position(position)
     , QPushButton(parent)
 {
-    createStateMachine();
+    ConfigGestionEtatCase();
     this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     setCheckable(true);
     setMouseTracking(true);
@@ -29,11 +29,11 @@ Case::Case(Position position, QWidget* parent /*= nullptr*/)
 Case::~Case()
 {
     _firstClick = false;
-    delete unrevealedState;
-    delete previewState;
-    delete flaggedState;
-    delete revealedState;
-    delete disabledState;
+    delete ModeNormal;
+    delete ModeAppercu;
+    delete ModeDrapeauPointe;
+    delete ModeDecouvert;
+    delete ModeInactive;
 }
 
 void Case::AjoutVoisin(Case* Case)
@@ -77,17 +77,17 @@ void Case::incrementNbMinesAutour()
 
 bool Case::AuneMarque() const
 {
-    return _machine.configuration().contains(flaggedState);
+    return _machine.configuration().contains(ModeDrapeauPointe);
 }
 
 bool Case::EstOuvert() const
 {
-    return _machine.configuration().contains(revealedState);
+    return _machine.configuration().contains(ModeDecouvert);
 }
 
 bool Case::isUnrevealed() const
 {
-    return _machine.configuration().contains(unrevealedState);
+    return _machine.configuration().contains(ModeNormal);
 }
 
 unsigned int Case::NbDrapeauAutour() const
@@ -105,7 +105,7 @@ void Case::decrementNbDrapeauAutour()
     --_NbDrapeauAutour;
 }
 
-QList<Case*>& Case::neighbors()
+QList<Case*>& Case::Voisinage()
 {
     return _voisins;
 }
@@ -115,14 +115,14 @@ void Case::mousePressEvent(QMouseEvent* e)
     if (!_firstClick)
     {
         _firstClick = true;
-        emit firstClick(this);
+        emit PremierClick(this);
     }
 
     _bothClicked = false;
 
     if (e->buttons() == (Qt::LeftButton | Qt::RightButton))
     {
-        emit bothClicked();
+        emit ClickGaucheEtDroit();
         _buttons = Qt::LeftButton | Qt::RightButton;
     }
     else if (e->buttons() == Qt::LeftButton)
@@ -134,11 +134,11 @@ void Case::mousePressEvent(QMouseEvent* e)
 void Case::mouseReleaseEvent(QMouseEvent* e)
 {
     if (_buttons == (Qt::LeftButton | Qt::RightButton))
-        emit unClicked();
+        emit PasDeClick();
     else if (_buttons == Qt::LeftButton)
-        emit leftClicked();
+        emit ClickNormal();
     else if (_buttons == Qt::RightButton)
-        emit rightClicked();
+        emit ClickDroit();
 }
 
 void Case::mouseMoveEvent(QMouseEvent* e)
@@ -155,36 +155,37 @@ QSize Case::sizeHint() const
     return Dimension;
 }
 
-void Case::createStateMachine()
+void Case::ConfigGestionEtatCase()
 {
-    unrevealedState = new QState;
-    previewState = new QState;
-    previewNeighborsState = new QState;
-    flaggedState = new QState;
-    revealedState = new QState;
-    revealNeighborsState = new QState;
-    disabledState = new QFinalState;
+    ModeNormal = new QState;
+    ModeAppercu = new QState;
+    AppercuDesVoisins = new QState;
+    ModeDrapeauPointe = new QState;
+    ModeDecouvert = new QState;
+    ModeVoisinsDecouverts = new QState;
+    ModeInactive = new QFinalState;
+// Gestion des transtions
+    // quitter Etat normal de la case aux evenements
+    ModeNormal->addTransition(this, &Case::ClickNormal, ModeDecouvert);
+    ModeNormal->addTransition(this, &Case::ClickDroit, ModeDrapeauPointe);
+    ModeNormal->addTransition(this, &Case::reveal, ModeDecouvert);
+    ModeNormal->addTransition(this, &Case::preview, ModeAppercu);
+    ModeNormal->addTransition(this, &Case::Inactivation, ModeInactive);
 
-    unrevealedState->addTransition(this, &Case::leftClicked, revealedState);
-    unrevealedState->addTransition(this, &Case::rightClicked, flaggedState);
-    unrevealedState->addTransition(this, &Case::reveal, revealedState);
-    unrevealedState->addTransition(this, &Case::preview, previewState);
-    unrevealedState->addTransition(this, &Case::disable, disabledState);
+    ModeAppercu->addTransition(this, &Case::reveal, ModeDecouvert);
+    ModeAppercu->addTransition(this, &Case::unPreview, ModeNormal);
+    ModeAppercu->addTransition(this, &Case::Inactivation, ModeInactive);
 
-    previewState->addTransition(this, &Case::reveal, revealedState);
-    previewState->addTransition(this, &Case::unPreview, unrevealedState);
-    previewState->addTransition(this, &Case::disable, disabledState);
+    ModeDrapeauPointe->addTransition(this, &Case::ClickDroit, ModeNormal);
 
-    flaggedState->addTransition(this, &Case::rightClicked, unrevealedState);
+    ModeDecouvert->addTransition(this, &Case::ClickGaucheEtDroit, AppercuDesVoisins);
 
-    revealedState->addTransition(this, &Case::bothClicked, previewNeighborsState);
+    AppercuDesVoisins->addTransition(this, &Case::PasDeClick, ModeVoisinsDecouverts);
+    AppercuDesVoisins->addTransition(this, &Case::unPreview, ModeDecouvert);
 
-    previewNeighborsState->addTransition(this, &Case::unClicked, revealNeighborsState);
-    previewNeighborsState->addTransition(this, &Case::unPreview, revealedState);
+    ModeVoisinsDecouverts->addTransition(this, &Case::reveal, ModeDecouvert);
 
-    revealNeighborsState->addTransition(this, &Case::reveal, revealedState);
-
-    connect(unrevealedState, &QState::entered, [this]()
+    connect(ModeNormal, &QState::entered, [this]()
     {
         //this->setIcon(getIcon(IconeCase::Vide));
         this->setStyleSheet(NormalStyle);
@@ -192,18 +193,18 @@ void Case::createStateMachine()
 
     });
 
-    connect(previewState, &QState::entered, [this]()
+    connect(ModeAppercu, &QState::entered, [this]()
     {
         this->setStyleSheet(CaseCliqueStyle);
     });
 
-    connect(previewNeighborsState, &QState::entered, [this]()
+    connect(AppercuDesVoisins, &QState::entered, [this]()
     {
         for (auto neighbor : _voisins)
             neighbor->preview();
     });
 
-    connect(revealNeighborsState, &QState::entered, [this]()
+    connect(ModeVoisinsDecouverts, &QState::entered, [this]()
     {
         if (_NbDrapeauAutour == _NbMinesAutour && _NbMinesAutour)
             revealNeighbors();
@@ -212,13 +213,13 @@ void Case::createStateMachine()
         emit reveal();
     });
 
-    connect(revealedState, &QState::entered, [this]()
+    connect(ModeDecouvert, &QState::entered, [this]()
     {
         unPreviewNeighbors();
         this->setChecked(true);
         if (!EstMine())
         {
-            setText();
+            Afficher();
 
             if (!AdesMinesAutour())
                 revealNeighbors();
@@ -227,46 +228,46 @@ void Case::createStateMachine()
         }
         else
         {
-            emit detonated();
+            emit Explosion();
             this->setStyleSheet(CaseCliqueStyle);
             QPushButton::setText("X");
            // setIcon(getIcon(IconeCase::Mine));
         }
     });
 
-    connect(flaggedState, &QState::entered, [this]()
+    connect(ModeDrapeauPointe, &QState::entered, [this]()
     {
         QPushButton::setStyleSheet(NormalStyle.arg("blue"));
          QPushButton::setText("?");
         for (auto neighbor : _voisins)
             neighbor->incrementNbDrapeauAutour();
-        emit flagged(_isMine);
+        emit PointDrapeau(_isMine);
 
     });
 
-    connect(flaggedState, &QState::exited, [this]()
+    connect(ModeDrapeauPointe, &QState::exited, [this]()
     {
          QPushButton::setText("");
         for (auto neighbor : _voisins)
             neighbor->decrementNbDrapeauAutour();
-        emit unFlagged(_isMine);
+        emit SuppressionDrappeau(_isMine);
     });
 
-    connect(disabledState, &QState::entered, [this]{});
+    connect(ModeInactive, &QState::entered, [this]{});
 
-    _machine.addState(unrevealedState);
-    _machine.addState(previewState);
-    _machine.addState(previewNeighborsState);
-    _machine.addState(flaggedState);
-    _machine.addState(revealedState);
-    _machine.addState(revealNeighborsState);
-    _machine.addState(disabledState);
+    _machine.addState(ModeNormal);
+    _machine.addState(ModeAppercu);
+    _machine.addState(AppercuDesVoisins);
+    _machine.addState(ModeDrapeauPointe);
+    _machine.addState(ModeDecouvert);
+    _machine.addState(ModeVoisinsDecouverts);
+    _machine.addState(ModeInactive);
 
-    _machine.setInitialState(unrevealedState);
+    _machine.setInitialState(ModeNormal);
     _machine.start();
 }
 
-void Case::setText()
+void Case::Afficher()
 {
     QString color;
     switch (_NbMinesAutour)
@@ -298,7 +299,7 @@ void Case::setText()
     default:
            break;
     }
-    QPushButton::setStyleSheet(CaseCliqueStyle.arg(color));
+    QPushButton::setStyleSheet(NumeroStyle.arg(color));
     if(_NbMinesAutour)
         QPushButton::setText(QString::number(_NbMinesAutour));
 }

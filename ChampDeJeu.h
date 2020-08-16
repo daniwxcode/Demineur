@@ -20,13 +20,13 @@ public:
     unsigned int numMines() const { return _numMines; }
 
 public slots:
-     void placeMines(Case* firstClicked);
+     void EpandageDesMines(Case* firstClicked);
 
 signals:
-    void initialized();
+    void PretADemarrer();
     void Victoire();
-    void defeat();
-    void flagCountChanged(unsigned int flagCount);
+    void Perdu();
+    void ChangementNbDrapeau(unsigned int const nombre);
 
 private:
     void CreationDesCases();
@@ -34,7 +34,7 @@ private:
     void AjoutVoisins();
     void _verifVictoire();
     void onVictory();
-    void defeatAnimation();
+    void Findejeu();
 
     unsigned int _nbLignes;
     unsigned int _nbCols;

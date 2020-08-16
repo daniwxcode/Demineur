@@ -13,11 +13,7 @@
 #include <QState>
 #include <QMainWindow>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
+class Acceuil : public QMainWindow
 {
     Q_OBJECT
 signals:
@@ -27,31 +23,30 @@ signals:
     void echec();
     void DemarrerNouveuJeu();
 
-//protected slots:
-//
-//    void onVictory();
 
 public:
 
 
 
-    MainWindow(QWidget *parent = nullptr);
-
-    ~MainWindow();
+    Acceuil(QWidget *parent = nullptr);
 private:
+ /*!
+     *  \brief Ajout du Menu de jeu
+     *
+     *  Methode qui permet d'ajouter le menu sur l'écran d'MainWindow
+
+     */
     void miseEnPlaceMenus();
     void initialisationJeux();
-    void setupStateMachine();
+    void ConfigMachineEtat();
+    void AfficheMessage(char* Message);
 
 private:
-    Ui::MainWindow *ui;
-
     QFrame* CadrePrincipal;
     QAction* actionNouveauJeu;
     Horloge* horloge;
     ChampDejeu* champDejeu;
     CompteurDeMine* compteurDeMines;
-    QPushButton* btnNouveauJeu;
     QMenu* menuJeu;
 
     QMenu* niveauMenu;
@@ -69,13 +64,13 @@ private:
     QTimer* horlogeJeux;
 
 
-// Code trouvé sur internet possibilité de mieux faire
+
 // Pattern State
     QStateMachine* m_machine;
-    QState* unstartedState;
-    QState* inProgressState;
-    QState* victoryState;
-    QState* defeatState;
+    QState* EtatNonDemarre;
+    QState* EtatEnCours;
+    QState* EtatVictorieux;
+    QState* EtatPartiePerdue;
     // Niveau du Jeu
     void defNiveau(Niveau niveau);
 

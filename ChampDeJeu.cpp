@@ -21,7 +21,7 @@ ChampDejeu::ChampDejeu(unsigned int nbLignes, unsigned int nbCols, unsigned int 
    {
        explosionTimer->setProperty("Victoire", true);
    });
-   connect(this, &ChampDejeu::defeat, [this]()
+   connect(this, &ChampDejeu::Perdu, [this]()
    {
        explosionTimer->setProperty("Victoire", false);
    }
@@ -37,17 +37,8 @@ ChampDejeu::ChampDejeu(unsigned int nbLignes, unsigned int nbCols, unsigned int 
 
         Case* mine = _mines.values().front();
         _mines.remove(mine);
+        mine->AfficheResultat();
 
-        if (explosionTimer->property("Victoire").toBool()){
-            //mine->setIcon(mine->getIcon(IconeCase::Bon));
-            mine->AfficheResultat();
-        }
-
-     //  else
-     //  {
-     //      if (!_BonsDrapeaux.contains(mine))
-     //          //mine->setIcon(mine->getIcon(IconeCase::Explosion));
-     //  }
     });
 }
 
@@ -75,8 +66,8 @@ void ChampDejeu::CreationDesCases()
             // Ajout d'une nouvelle case
             _Cases[r] += new Case({ r, c }, this);
             static_cast<QGridLayout*>(this->layout())->addWidget(_Cases[r][c], r, c);
-            connect(_Cases[r][c], &Case::firstClick, this, &ChampDejeu::placeMines);
-            connect(_Cases[r][c], &Case::flagged, [this, Case = _Cases[r][c]](bool isMine)
+            connect(_Cases[r][c], &Case::PremierClick, this, &ChampDejeu::EpandageDesMines);
+            connect(_Cases[r][c], &Case::PointDrapeau, [this, Case = _Cases[r][c]](bool isMine)
             {
                 if (isMine)
                     _BonsDrapeaux.insert(Case);
@@ -84,7 +75,7 @@ void ChampDejeu::CreationDesCases()
                     _MauvaisDrapeaux.insert(Case);
                 _verifVictoire();
             });
-            connect(_Cases[r][c], &Case::unFlagged, [this, Case = _Cases[r][c]](bool isMine)
+            connect(_Cases[r][c], &Case::SuppressionDrappeau, [this, Case = _Cases[r][c]](bool isMine)
             {
                 if (isMine)
                     _BonsDrapeaux.remove(Case);
@@ -97,9 +88,9 @@ void ChampDejeu::CreationDesCases()
                 _CaseDecouverts.insert(Case);
                 _verifVictoire();
             });
-            connect(_Cases[r][c], &Case::detonated, this, &ChampDejeu::defeatAnimation);
-            connect(this, &ChampDejeu::defeat, _Cases[r][c], &Case::disable);
-            connect(this, &ChampDejeu::Victoire, _Cases[r][c], &Case::disable);
+            connect(_Cases[r][c], &Case::Explosion, this, &ChampDejeu::Findejeu);
+            connect(this, &ChampDejeu::Perdu, _Cases[r][c], &Case::Inactivation);
+            connect(this, &ChampDejeu::Victoire, _Cases[r][c], &Case::Inactivation);
         }
     }
     _Cases[0][0]->setDown(true);
@@ -130,12 +121,11 @@ void ChampDejeu::AjoutVoisins()
 
 void ChampDejeu::_verifVictoire()
 {
-
-    if (!_etatJeux==EtatJeu::Succes)
-    {
-        //envoie le signal pour notifier que le nombre de Drapeaux a changé
-        emit flagCountChanged(_BonsDrapeaux.size() + _MauvaisDrapeaux.size());
-        if ((_CaseDecouverts.size() ==(int) (_nbCols * _nbLignes) -(int) _numMines) && _MauvaisDrapeaux.isEmpty())
+    //envoie le signal pour notifier que le nombre de Drapeaux a changé
+    emit ChangementNbDrapeau(_BonsDrapeaux.size() + _MauvaisDrapeaux.size());
+    if (_etatJeux!=EtatJeu::Succes){
+    if (((_CaseDecouverts.size() ==(int) (_nbCols * _nbLignes) -(int) _numMines) && _MauvaisDrapeaux.isEmpty())
+                || (_numMines == _BonsDrapeaux.size()))
         {
             emit Victoire();
             _etatJeux = EtatJeu::Succes;
@@ -143,34 +133,26 @@ void ChampDejeu::_verifVictoire()
             {
                 explosionTimer->start(25);
             });
-        }
     }
-}
+}}
 
-void ChampDejeu::defeatAnimation()
+void ChampDejeu::Findejeu()
 {
-    Case* sender = dynamic_cast<Case*>(this->sender());
-    QTimer::singleShot(350, this, [sender]()
-    {
-        //sender->setIcon(sender->getIcon(IconeCase::Explosion));
-    });
     QTimer::singleShot(500, this, [this]()
     {
         for (auto wrong : _MauvaisDrapeaux)
         {
-            //wrong->setIcon(wrong->getIcon(IconeCase::Erreur));
            wrong->AfficheResultat();
         }
         for (auto mine : _mines)
         {
-            disconnect(mine, &Case::detonated, this, &ChampDejeu::defeatAnimation);
+            disconnect(mine, &Case::Explosion, this, &ChampDejeu::Findejeu);
             if (!mine->AuneMarque()){
                 mine->reveal();
-
             }
             mine->AfficheResultat();
         }
-        emit defeat();
+        emit Perdu();
     });
 
     QTimer::singleShot(1000, explosionTimer, [this]()
@@ -179,25 +161,25 @@ void ChampDejeu::defeatAnimation()
     });
 }
 
-void ChampDejeu::placeMines(Case* firstClicked)
+void ChampDejeu::EpandageDesMines(Case* AuPremierClick)
 {
 
     QList<Case*> Cases;
-    QSet<Case*> doneUse;
-    doneUse += firstClicked;
-    doneUse += QSet<Case*>(firstClicked->neighbors().begin(),firstClicked->neighbors().end());
+    QSet<Case*> _caseAnePasMiner;
+    _caseAnePasMiner += AuPremierClick;
+    _caseAnePasMiner += QSet<Case*>(AuPremierClick->Voisinage().begin(),AuPremierClick->Voisinage().end());
     for (unsigned int r = 0; r < _nbLignes; ++r)
     {
         _Cases += QList<Case*>{};
         for (unsigned int c = 0; c < _nbCols; ++c)
         {
             // Ajout au rang à moins que ce soit la première mine sur la quelle on a cliqué
-            if (auto Case = _Cases[r][c]; !doneUse.contains(Case))
+            if (auto Case = _Cases[r][c]; !_caseAnePasMiner.contains(Case))
                 Cases += Case;
         }
     }
 
-    // Melange
+    // Minage du terrain
     std::random_device rd;
     std::mt19937 g(rd());
 
@@ -209,5 +191,5 @@ void ChampDejeu::placeMines(Case* firstClicked)
         _mines.insert(Cases[i]);
     }
 
-    emit initialized();
+    emit PretADemarrer();
 }
