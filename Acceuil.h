@@ -21,21 +21,18 @@ signals:
     void demarrerJeu();
     void victoire();
     void echec();
-    void DemarrerNouveuJeu();
-
 
 public:
-
-
-
     Acceuil(QWidget *parent = nullptr);
 private:
+
  /*!
      *  \brief Ajout du Menu de jeu
      *
      *  Methode qui permet d'ajouter le menu sur l'écran d'MainWindow
 
-     */
+ */
+    void DemarrerNouveuJeu();
     void miseEnPlaceMenus();
     void initialisationJeux();
     void ConfigMachineEtat();
