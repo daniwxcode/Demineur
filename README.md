@@ -11,6 +11,22 @@
 - Qt
 
 ### Capttures d'écrans
-Captures/ChoixNiveau.png
+
 ![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/ChoixNiveau.png)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/intermediaire.png)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/ModeExpert.png)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/Ecran Par defaut.PNG)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/victoire.png)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/succes.png)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/jeux.PNG)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/DefaiteMessage.png)
+======
+![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/Defaite.jpg)
 ======
