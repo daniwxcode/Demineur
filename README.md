@@ -17,8 +17,7 @@
 ![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/intermediaire.png)
 ======
 ![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/ModeExpert.png)
-======
-![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/Ecran Par defaut.PNG)
+
 ======
 ![Alt](https://raw.githubusercontent.com/daniwxcode/Demineur/master/Captures/victoire.png)
 ======
